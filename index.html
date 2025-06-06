@@ -20,8 +20,8 @@
             </ul>
         </nav>
         <div class="header-text">
-            <p>HELLO</p>
-            <h1><span>welcome</span> to my page</h1>
+            <img src="images/hello.png" alt="hello">
+            <h1><span>welcome</span> to silly website</h1>
         </div>
     </div>
 </div>
@@ -35,7 +35,7 @@
             <div class="about-col-2">
                 <h1 class="sub-title">About Me</h1>
                 <p> Hi, I'm just someone who have been trying to goof around using the knowledge I learnt from school. <br>
-                    I still remember back in high school, I made the most simple game (number guessing) using C programming <br>
+                    I still remember back in high school, I made the most simple game (number guessing) using C programming 
                     taught in class, and that sparked something inside me. <br>
                     With more knowledge in coding now, I am urging myself to do more. <br>
                     Currently I have started a few silly projects, like coding this website and making discord bots, mainly for personal use. <br>
@@ -46,15 +46,51 @@
                 </p>
 
                 <div class="tab-titles">
-                    <p class="tab-links">Skills</p>
-                    <p class="tab-links">Experience</p>
-                    <p class="tab-links">Education</p>
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>Programming languages</span><br>python, c++, javascript, MIPS assembly</li>
+                        <li><span>Tech</span><br>Arduino, MIT app inventor, circuits</li>
+                        <li><span>Actual languages</span><br>English, Chinese (Cantonese and Mandarin)</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>Wafer Systems</span><br>Working on public library smart system, assisted in debugging process</li>
+                        <li><span>MTR</span><br>Making the workspace in train depot more safe</li>
+                        <li><span>some tutorial centres</span><br>Making exercises and teaching students</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>2023</span><br>Hong Kong University of Science and Technology - Bachelor's degree of Computer Engineering</li>
+                        <li><span>2017</span><br>St. Joseph's College</li>
+                        
+                    </ul>
                 </div>
 
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
     
 </body>
 </html>

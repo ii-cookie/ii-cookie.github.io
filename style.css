@@ -16,7 +16,7 @@ body{
     background-position: center;
 }
 .container{
-    padding: 10px 10%;
+    padding: 40px 10%;
 }
 nav{
     display: flex;
@@ -68,7 +68,9 @@ nav ul li a:hover::after{
 
 .header-text{
     color: #f52db2;
-    margin-top: 15%;
+    background: transparent;
+    margin-top: 20%;
+    margin-left: -10%;
     font-size: 200px;
 
 }
@@ -77,7 +79,7 @@ nav ul li a:hover::after{
     color: #fff;
     font-size: 100px;
     margin-top: 100px;
-    margin-left: 300px;
+    margin-left: 400px;
 }
 
 
@@ -128,10 +130,47 @@ nav ul li a:hover::after{
 
 }
 
-.tab-links{
-    margin-right: 50px;
-    font-size: 18px;
-    font-weight: 500;
+.tab-links {
+    color: #f42b7c;
+    margin-right: 90px;
+    font-size: 170px; /* Larger font size for all tabs */
+    font-weight: 600; /* Bolder text */
     cursor: pointer;
     position: relative;
 }
+
+.tab-links::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #c0dd19;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.tab-links.active-link::after{
+    width: 50%;
+}
+
+.tab-contents ul li{
+    list-style: none;
+    margin: 20px 0;
+    font-size: 27px;
+}
+
+.tab-contents ul li span{
+    color: #fff;
+    font-size: 30px;
+}
+
+.tab-contents{
+    display: none;
+}
+
+.tab-contents.active-tab{
+    display: block;
+
+}
+
