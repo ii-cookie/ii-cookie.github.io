@@ -116,6 +116,8 @@ nav ul li a:hover::after{
 
 .about-col-2 p{
     font-size: 27px;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .sub-title{
