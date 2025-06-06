@@ -42,13 +42,20 @@ nav ul li a{
     text-decoration: none;
     font-size: 50px;
     position: relative;
+    display: inline-block; 
+
+
+}
+nav ul li a img {
+    display: inline-block;
+
 }
 
 nav ul li a::after{
     content: '';
     width: 0;
     height: 7px;
-    background: #7bff00;
+    background: #ff00ae;
     position: absolute;
     left: 0;
     bottom: -6px;
