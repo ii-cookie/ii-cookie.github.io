@@ -421,9 +421,37 @@ form btn2{
 }
 
 /* -----------------css for small screens------------- */
+nav .fa-solid{
+    display: none;
+}
 
 @media only screen and (max-width: 600px){
     #header{
         background-image: url(images/background-phone.png);
+    }
+    .header-text{
+        margin-top: 100%;
+        font-size: 16px;
+
+    }
+    .header-text h1{
+        font-size: 30px;
+    }
+    nav .fa-solid{
+        display: block;
+        font-size: 25px;
+    }
+    nav ul{
+        background: #ff004f;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+    }
+    nav ul li{
+        display: block;
+        margin: 25px;
     }
 }
