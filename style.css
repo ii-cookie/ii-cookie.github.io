@@ -1,11 +1,22 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
     box-sizing: border-box;
 }
+
+:root{
+    --bg_color: #45122b;
+    --menu_color: #a7456e;
+    --title_color: #c92873;
+}
+
+
+
 body{
-    background: #45122b;
+    font-family: "Caveat Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+    background: var(--bg_color);
     color: #fff;
 }
 #header{
@@ -14,9 +25,10 @@ body{
     background-image: url(images/background.png);
     background-size: cover;
     background-position: center;
+    
 }
 .container{
-    padding: 40px 10%;
+    padding: 20px 5%;
 }
 nav{
     display: flex;
@@ -28,7 +40,6 @@ nav{
     right: 0;
     left: 0;
     z-index: 999;
-    backdrop-filter: blur(10px);
 }
 .logo{
     width: 100px ;
@@ -39,29 +50,34 @@ nav{
 nav ul li{
     display: inline-block;
     list-style: none;
-    margin: 10px 20px;
+    margin: 15px 10px;
 
 }
 
 nav ul li a{
-    color: #ff8bbb;
+    padding: 10px 20px;
+    color: var(--menu_color);
     text-decoration: none;
-    font-size: 50px;
+    font-size: 30px;
     position: relative;
     display: inline-block; 
     backdrop-filter: blur(10px);
-    border-radius: 15px;
-
+    border-radius: 20px;
+    transition: 0.5s;
+    &:hover{
+        background-color: #ff004f;
+        color: white;
+    }
 }
-nav ul li a img {
+/* nav ul li a img {
     display: inline-block;
 
-}
+} */
 
 nav ul li a::after{
     content: '';
     width: 0;
-    height: 7px;
+    height: 3px;
     background: #ff00ae;
     position: absolute;
     left: 0;
@@ -70,28 +86,36 @@ nav ul li a::after{
 }
 
 nav ul li a:hover::after{
+    background-color: rgb(255, 255, 255);
     width: 100%;
 }
 
 .header-text{
     color: #f52db2;
     background: transparent;
-    margin-top: 20%;
-    margin-left: -10%;
+    margin-top: 10%;
     font-size: 200px;
 
 }
 
 .header-text h1{
     color: #fff;
-    font-size: 100px;
+    font-size: 30px;
     margin-top: 100px;
-    margin-left: 400px;
+    text-align: center;
 }
 
+.header-text img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
 
 .header-text h1 span{
+    display: block;
     color: #ff007b;
+    font-size: 80px;
 }
 
 /* ------------about------------ */
@@ -335,7 +359,12 @@ nav ul li a:hover::after{
 
 
 .contact-left p{
+    padding-right: -500px;
     margin: 30px;
+    transition: 0.5s;
+    &:hover{
+        transform: translateY(-5px);
+    }
 }
 
 .contact-left p i{
@@ -348,6 +377,10 @@ nav ul li a:hover::after{
     color: #ffffff;
     text-decoration: none;
     font-size: 18px;
+    transition: transform 0.5s;
+    &:hover{
+        color: #ff004f;
+    }
 }
 
 .social-icons{
@@ -370,9 +403,32 @@ nav ul li a:hover::after{
 }
 
 .btn.btn2{
-    display: inline-block;
+    /* display: inline-block;
     background: #ff004f;
-    transition: font-size 0.2s;
+    transition: font-size 0.2s; */
+    font-family: "Caveat Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+    background: var(--bg_color);
+    
+    background-color: transparent;
+    border: 3px solid #ff004f;
+    border-radius: 20px;
+    color: white;
+    background-image: url(https://web.archive.org/web/20160312084140im_/http://splatoon.nintendo.com/assets/img/nav-bg-fill-blue.png?1443460871);
+    background-repeat: repeat-x;
+    background-position: 0-100%;
+    transition: 1.3s ease;
+    &:hover {
+        background-color: transparent;
+        background-position: center;
+    }
+    &:nth-child(1){
+        filter: hue-rotate(0deg);
+    }
+    &:nth-child(2){
+        filter: hue-rotate(20deg);
+    }
 }
 
 .btn.btn2:hover{
@@ -381,10 +437,14 @@ nav ul li a:hover::after{
 
 .contact-right form{
     width: 100%;
-
 }
 
 form input, form textarea{
+    font-family: "Caveat Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+    background: var(--bg_color);
+
     width: 100%;
     border: 0;
     outline: none;
@@ -397,10 +457,12 @@ form input, form textarea{
 }
 
 form ::placeholder{
+    
     color: #d88db1;
 }
 
 form btn2{
+    
     padding: 14px 60px;
     font-size: 18px;
     margin-top: 20px;
@@ -426,8 +488,12 @@ nav .fa-solid{
 }
 
 @media only screen and (max-width: 600px){
+    
+
     #header{
         background-image: url(images/background-phone.png);
+        flex-direction: columns;
+        align-items: center;
     }
     .header-text{
         margin-top: 100%;
@@ -453,5 +519,11 @@ nav .fa-solid{
     nav ul li{
         display: block;
         margin: 25px;
+    }
+    nav ul .fas{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
     }
 }
