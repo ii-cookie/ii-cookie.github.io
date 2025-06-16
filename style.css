@@ -9,6 +9,7 @@
     --menu_color: #a7456e;
     --title_color: #c92873;
     --subtitle_color: #dd1985;
+    --theme_color: #ff004f;
 }
 
 
@@ -42,6 +43,39 @@ nav{
     left: 0;
     z-index: 999;
 }
+nav a{
+    padding-right: 0px;
+    display: flex;
+    font-size: 50px;
+    text-decoration: none;
+    background-color: var(--menu_color);
+    background: linear-gradient(to right rgba(0,0,0,1), rgba(0,0,0,0));
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: color-change 5s infinite;
+}
+
+@keyframes color-change{
+    0% { color: rgb(255, 123, 123); }
+    33% { color: rgb(123, 236, 117); }
+    66% { color: rgb(140, 127, 255); }
+    100% { color: rgb(255, 123, 123); }
+}
+
+nav a img{
+    display: flex;
+    border: 4px solid;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+nav a i{
+    border: 1px solid;
+    display: block;
+    padding-top: auto;
+    padding-bottom: auto;
+    padding: auto;
+}
 .logo{
     width: 100px ;
     
@@ -56,6 +90,8 @@ nav ul li{
 }
 
 nav ul li a{
+    animation: none;
+    border: none;
     padding: 10px 20px;
     color: var(--menu_color);
     text-decoration: none;
@@ -98,7 +134,7 @@ nav ul li a:hover::after{
     margin-right: auto;
     color: #f52db2;
     background: transparent;
-    margin-top: 10%;
+    margin-top: 5%;
     font-size: 200px;
 
 }
@@ -115,12 +151,21 @@ nav ul li a:hover::after{
     margin-left: auto;
     margin-right: auto;
     border-radius: 50%;
+    border: 10px solid;
+    animation: pfp-color-change 5s infinite;
+}
+@keyframes pfp-color-change{
+    0% { color: rgb(255, 123, 123); }
+    33% { color: var(--theme_color); }
+    66% { color: rgb(214, 54, 115); }
+    100% { color: rgb(255, 123, 123); }
 }
 
 .header-text h1 span{
     display: block;
     color: #ff007b;
     font-size: 80px;
+    animation: color-change 4.5s infinite;
 }
 
 /* ------------about------------ */
@@ -169,14 +214,20 @@ nav ul li a:hover::after{
 }
 
 .tab-links {
-    color: #f42b7c;
+    color: var(--menu_color);
     margin-right: 90px;
     font-size: 170px; /* Larger font size for all tabs */
     font-weight: 600; /* Bolder text */
     cursor: pointer;
     position: relative;
+    transition: 0.5s;
+    &:hover{
+        color: var(--theme_color);
+    }
 }
-
+.tab-links:hover::after{
+    width: 25%;
+}
 .tab-links::after{
     content: '';
     width: 0;
