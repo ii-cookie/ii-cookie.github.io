@@ -12,7 +12,9 @@
     --theme_color: #ff004f;
 }
 
-
+html{
+    scroll-behavior: smooth;
+}
 
 body{
     font-family: "Caveat Brush", cursive;
@@ -466,9 +468,9 @@ nav ul li a:hover::after{
 }
 
 .btn.btn2{
-    /* display: inline-block;
+    display: inline-block;
     background: #ff004f;
-    transition: font-size 0.2s; */
+    transition: font-size 0.2s; 
     font-family: "Caveat Brush", cursive;
     font-weight: 400;
     font-style: normal;
@@ -621,4 +623,11 @@ nav .fa-solid{
     .copyright{
         font-size: 14px;
     }
+}
+
+#msg{
+    color: #61b752;
+    margin-top: -45px;
+    margin-left: 5px;
+    display: block;
 }
