@@ -14,18 +14,14 @@
 
     <link rel = "icon" type = "image/jpg" href = "images/favicon.jpg">
 </head>
+
 <body>
 <div id="header">
-    <div class="container">
+
         <nav>
             <!-- <img src="images/logo.png" alt="logo" height="90" width="240"> -->
             <a href="#"><img src="images/favicon.jpg" width="60px" height="60px">iicookie</a>
             <ul id="sidemenu">
-                <!-- <li><a href="#home"><img src="images/home-icon.png" alt="Home icon"></a></li>
-                <li><a href="#about"><img src="images/about-icon.png" alt="About icon"></a></li>
-                <li><a href="#services"><img src="images/services-icon.png" alt="Services icon"></a></li>
-                <li><a href="#portfolio"><img src="images/portfolio-icon.png" alt="Portfolio icon"></a></li>
-                <li><a href="#contact"><img src="images/contact-icon.png" alt="Contact icon"></a></li> -->
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">About</a></li>
@@ -218,12 +214,14 @@
     var sidemenu = document.getElementById("sidemenu");
 
     function openmenu(){
-        sidemenu.style.right = "0"
+        sidemenu.style.transform = "translateX(-200px)"
+        // sidemenu.style.right = "0"
     }
 
     function closemenu(){
-        sidemenu.style.right = "-200"
+        sidemenu.style.transform = "translateX(200px)"
     }
+    document.getElementById("fa-solid fa-xmark").addEventListener("click", closemenu());
 </script>
     
 </body>

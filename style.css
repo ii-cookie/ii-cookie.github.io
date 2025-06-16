@@ -81,6 +81,9 @@ nav a i{
     
 
 }
+nav ul{
+    transition: 0.5s;
+}
 
 nav ul li{
     display: inline-block;
@@ -88,6 +91,8 @@ nav ul li{
     margin: 15px 10px;
 
 }
+
+
 
 nav ul li a{
     animation: none;
@@ -98,7 +103,7 @@ nav ul li a{
     font-size: 30px;
     position: relative;
     display: inline-block; 
-    backdrop-filter: blur(10px);
+    backdrop-filter:url(#displacementFilter4);
     border-radius: 20px;
     transition: 0.5s;
     &:hover{
@@ -566,7 +571,7 @@ nav .fa-solid{
     }
     nav ul{
         margin-right: -5px;
-        margin-top: -5px;
+
 
         background: var(--bg_color);
         border: 5px solid var(--theme_color);
