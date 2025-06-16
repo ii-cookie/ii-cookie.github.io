@@ -544,7 +544,7 @@ nav .fa-solid{
     display: none;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 888px){
     
 
     #header{
@@ -565,22 +565,30 @@ nav .fa-solid{
         font-size: 25px;
     }
     nav ul{
-        background: #ff004f;
+        margin-right: -5px;
+        margin-top: -5px;
+
+        background: var(--bg_color);
+        border: 5px solid var(--theme_color);
         position: fixed;
         top: 0;
-        right: 0;
+        right: -200px;
         width: 200px;
         height: 100vh;
         padding-top: 50px;
+        z-index: 2;
     }
     nav ul li{
         display: block;
         margin: 25px;
     }
-    nav ul .fas{
+    nav ul .fa-solid.fa-xmark{
         position: absolute;
-        top: 25px;
+        top: 45px;
         left: 25px;
         cursor: pointer;
+    }
+    .about-col-1{
+        flex-basis: 100%;
     }
 }

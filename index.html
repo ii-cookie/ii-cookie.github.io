@@ -20,7 +20,7 @@
         <nav>
             <!-- <img src="images/logo.png" alt="logo" height="90" width="240"> -->
             <a href="#"><img src="images/favicon.jpg" width="60px" height="60px">iicookie</a>
-            <ul>
+            <ul id="sidemenu">
                 <!-- <li><a href="#home"><img src="images/home-icon.png" alt="Home icon"></a></li>
                 <li><a href="#about"><img src="images/about-icon.png" alt="About icon"></a></li>
                 <li><a href="#services"><img src="images/services-icon.png" alt="Services icon"></a></li>
@@ -31,9 +31,9 @@
                 <li><a href="#services">About</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
             </ul>
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
             
         </nav>
         <div class="header-text">
@@ -209,6 +209,20 @@
         }
         event.currentTarget.classList.add("active-link");
         document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+
+
+<script>
+
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemenu.style.right = "0"
+    }
+
+    function closemenu(){
+        sidemenu.style.right = "-200"
     }
 </script>
     
