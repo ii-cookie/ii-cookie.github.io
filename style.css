@@ -498,7 +498,7 @@ nav ul li a:hover::after{
 }
 
 .btn.btn2:hover{
-    font-size: 20px;
+    transform: translateY(-5px);
     cursor: pointer;
 }
 
@@ -560,11 +560,15 @@ nav .fa-solid{
         background-image: url(images/background-phone.png);
         flex-direction: columns;
         align-items: center;
+        overflow: hidden;
     }
     .header-text{
         margin-top: 20%;
         font-size: 16px;
-
+    }
+    .header-text img{
+        width: 100px;
+        height: 100px;
     }
     .header-text h1{
         font-size: 30px;
@@ -576,12 +580,12 @@ nav .fa-solid{
     nav ul{
         margin-right: -5px;
 
-
+        overflow: hidden;
         background: var(--bg_color);
         border: 5px solid var(--theme_color);
         position: fixed;
         top: 0;
-        right: -200px;
+        right: -250px;
         width: 200px;
         height: 100vh;
         padding-top: 50px;
