@@ -29,7 +29,7 @@ body{
     background-image: url(images/background.png);
     background-size: cover;
     background-position: center;
-    
+    background-attachment: fixed;
 }
 .container{
     padding: 20px 5%;
@@ -39,7 +39,7 @@ nav{
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    position: sticky;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -143,7 +143,7 @@ nav ul li a:hover::after{
     margin-right: auto;
     color: #f52db2;
     background: transparent;
-    margin-top: 5%;
+    margin-top: 100px;
     font-size: 200px;
 
 }
@@ -503,6 +503,7 @@ nav ul li a:hover::after{
 }
 
 .contact-right form{
+    padding-right: 5%;
     width: 100%;
 }
 
@@ -561,9 +562,10 @@ nav .fa-solid{
         flex-direction: columns;
         align-items: center;
         overflow: hidden;
+        background-attachment: fixed;
     }
     .header-text{
-        margin-top: 20%;
+        margin-top: 40%;
         font-size: 16px;
     }
     .header-text img{
@@ -577,18 +579,21 @@ nav .fa-solid{
         display: block;
         font-size: 25px;
     }
-    nav ul{
-        margin-right: -5px;
-
-        overflow: hidden;
-        background: var(--bg_color);
-        border: 5px solid var(--theme_color);
+    nav {
+        position: fixed; 
+        width: 100%;
+        margin: 0;
+        padding: 20px 5%;
+    }
+    nav ul {
         position: fixed;
         top: 0;
-        right: -250px;
+        right: -200px; 
         width: 200px;
         height: 100vh;
         padding-top: 50px;
+        background: var(--bg_color);
+        border: 5px solid var(--theme_color);
         z-index: 2;
     }
     nav ul li{
