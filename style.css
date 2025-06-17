@@ -10,7 +10,18 @@
     --title_color: #c92873;
     --subtitle_color: #dd1985;
     --theme_color: #ff004f;
+    --highlight-color: #dd1985;
 }
+
+::-moz-selection { /* Code for Firefox */
+    color: rgb(255, 0, 85);
+    background: rgb(151, 186, 226);
+  }
+  
+::selection {
+    color: rgb(255, 0, 85);
+    background: rgb(151, 186, 226);
+  }
 
 html{
     scroll-behavior: smooth;
@@ -22,6 +33,7 @@ body{
     font-style: normal;
     background: var(--bg_color);
     color: #fff;
+
 }
 #header{
     width: 100%;
