@@ -48,6 +48,23 @@ nav{
     /* backdrop-filter:url(#displacementFilter4); */
     backdrop-filter: blur(5px);
 }
+#scroll-progress{
+    position: fixed;
+    top: 0;
+    width: 0%;
+    height: 4px;
+    background: #7983ff;
+    z-index: 10000;
+    animation: bg-color-change 5s infinite;
+}
+
+@keyframes bg-color-change{
+    0% { background-color: rgb(255, 123, 123); }
+    33% { background-color: rgb(123, 236, 117); }
+    66% { background-color: rgb(140, 127, 255); }
+    100% { background-color: rgb(255, 123, 123); }
+}
+
 nav a{
     padding-right: 0px;
     display: flex;
@@ -588,7 +605,7 @@ nav .fa-solid{
     nav ul {
         position: fixed;
         top: 0;
-        right: -200px; 
+        right: -200px;
         width: 200px;
         height: 100vh;
         padding-top: 50px;

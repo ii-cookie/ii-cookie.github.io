@@ -19,8 +19,9 @@
 
 
 <div id="header">
-
+<div id="scroll-progress"></div>
         <nav>
+            
             <!-- <img src="images/logo.png" alt="logo" height="90" width="240"> -->
             <a href="https://youtu.be/dQw4w9WgXcQ?si=SAAeXF6ZH7q0R_4a"><img src="images/favicon.jpg" width="60px" height="60px">iicookie</a>
             <ul id="sidemenu">
@@ -240,6 +241,17 @@
         })
         .catch(error => console.error('Error!', error.message))
     })
-  </script>
+</script>
+<script>
+    const scrollProgress = document.getElementById("scroll-progress");
+const height =
+    document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+    window.addEventListener("scroll", () => {
+        const scrollTop =
+        document.body.scrollTop || document.documentElement.scrollTop;
+        scrollProgress.style.width = `${(scrollTop / height) * 100}%`;
+    });
+</script>
 </body>
 </html>
