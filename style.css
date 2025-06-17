@@ -10,17 +10,18 @@
     --title_color: #c92873;
     --subtitle_color: #dd1985;
     --theme_color: #ff004f;
-    --highlight-color: #dd1985;
+    --highlight-color: rgb(151, 186, 226);
+    --highlight-color-text: rgb(255, 0, 85);
 }
 
-::-moz-selection { /* Code for Firefox */
-    color: rgb(255, 0, 85);
-    background: rgb(151, 186, 226);
+::-moz-selection { 
+    color: var(--highlight-color-text);
+    background: var(--highlight-color);
   }
   
 ::selection {
-    color: rgb(255, 0, 85);
-    background: rgb(151, 186, 226);
+    color: var(--highlight-color-text);
+    background: var(--highlight-color);
   }
 
 html{
@@ -65,7 +66,6 @@ nav{
     top: 0;
     width: 0%;
     height: 4px;
-    background: #7983ff;
     z-index: 10000;
     animation: bg-color-change 5s infinite;
 }
@@ -90,10 +90,10 @@ nav a{
 }
 
 @keyframes color-change{
-    0% { color: rgb(255, 123, 123); }
-    33% { color: rgb(123, 236, 117); }
-    66% { color: rgb(140, 127, 255); }
-    100% { color: rgb(255, 123, 123); }
+    0% { color: rgba(255, 123, 123, 0.2); }
+    33% { color: rgba(123, 236, 117, 0.2); }
+    66% { color: rgba(140, 127, 255, 0.2); }
+    100% { color: rgba(255, 123, 123, 0.2); }
 }
 
 nav a img{
@@ -200,8 +200,9 @@ nav ul li a:hover::after{
 }
 
 .header-text h1 span{
+    background-clip: text;
     display: block;
-    color: #ff007b;
+    background-image: linear-gradient(#eee, #000000);
     font-size: 80px;
     animation: color-change 4.5s infinite;
 }
