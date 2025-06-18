@@ -74,6 +74,18 @@ nav{
 }
 /* failed blur, idk why */
 #scroll-progress::before{   
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #FFAEBC, #A0E7E5, #B4F8C8, #FBE7C6, #FFAEBC);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    z-index: -1;
+    padding: 8px;
+    animation: spin 3s linear infinite;
     filter: blur(1.5rem);
 }
 
