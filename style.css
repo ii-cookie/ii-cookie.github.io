@@ -64,13 +64,17 @@ nav{
     /* backdrop-filter:url(#displacementFilter4); */
     backdrop-filter: blur(5px);
 }
-#scroll-progress{
+#scroll-progress, #scroll-progress::before{
     position: fixed;
     top: 0;
     width: 0%;
     height: 4px;
     z-index: 10000;
     animation: bg-color-change 5s infinite;
+}
+/* failed blur, idk why */
+#scroll-progress::before{   
+    filter: blur(1.5rem);
 }
 
 @keyframes bg-color-change{
@@ -89,14 +93,15 @@ nav a{
     background: linear-gradient(to right rgba(0,0,0,1), rgba(0,0,0,0));
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: color-change 5s infinite;
+    animation: pfp-color-change 5s infinite;
 }
 
 @keyframes color-change{
-    0% { color: rgba(255, 123, 123, 0.2); }
-    33% { color: rgba(123, 236, 117, 0.2); }
-    66% { color: rgba(140, 127, 255, 0.2); }
-    100% { color: rgba(255, 123, 123, 0.2); }
+    0% { color: rgba(47, 243, 224, 0.4); }
+    25% { color: rgba(248, 210, 16, 0.4); }
+    50% { color: rgba(250, 38, 160, 0.4); }
+    75% { color: rgba(245, 23, 32, 0.4); }
+    100% { color: rgba(47, 243, 224, 0.4); }
 }
 
 nav a img{
@@ -188,16 +193,61 @@ nav ul li a:hover::after{
 }
 
 .header-text img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
     border-radius: 50%;
-    border: 10px solid;
+    border: 0px solid;
     animation: pfp-color-change 5s infinite;
     /* &:hover{
         animation: pfp-run 2s infinite;
     } */
     
+}
+
+.pfp{
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    border: 10px solid;
+    width: 280px;
+    height: 280px;
+}
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+.pfp::after, .pfp::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #FFAEBC, #A0E7E5, #B4F8C8, #FBE7C6, #FFAEBC);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    z-index: -1;
+    padding: 8px;
+    animation: spin 3s linear infinite;
+}
+@keyframes spin{
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
+.pfp::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
 }
 /* .header-text img:hover {
     animation: pfp-run 0.5s ease forwards; 
