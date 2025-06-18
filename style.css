@@ -31,22 +31,22 @@ html{
     scroll-behavior: smooth;
 }
 
-.circle, .circle::after{
+.circle, .circle::before{
     --circle-size: 40px;
     position: fixed;
     height: var(--circle-size);
     width: var(--circle-size);
-    border: 3px solid white;
+    border: 5px solid white;
     border-radius: 100%;
     top: calc(var(--circle-size)/2*-1);
     left: calc(var(--circle-size)/2*-1);
     pointer-events: none;
     animation: cursor-color-change 3s infinite;
-    z-index: 100000000000000000000000;
+    z-index: 1000000000;
 }
 
-.circle::after{
-    filter: blur(5rem);
+.circle::before{
+    filter: blur(5px);
 }
 
 

@@ -45,7 +45,7 @@ const tick = () => {
   // 2. Calculate mouse velocity using Pythagorean theorem and adjust speed
   const mouseVelocity = Math.min(Math.sqrt(deltaMouseX**2 + deltaMouseY**2) * 4, 150); 
   // 3. Convert mouse velocity to a value in the range [0, 0.5]
-  const scaleValue = (mouseVelocity / 80) * 0.5;
+  const scaleValue = (mouseVelocity / 100) * 0.5;
   // 4. Smoothly update the current scale
   currentScale += (scaleValue - currentScale) * speed;
   // 5. Create a transformation string for scaling
@@ -53,9 +53,9 @@ const tick = () => {
 
   // ROTATE
   // 1. Calculate the angle using the atan2 function
-  const angle = Math.atan2(deltaMouseY, deltaMouseX) * 180 / Math.PI;
+  const angle = Math.atan2(mouse.y - circle.y, mouse.x-circle.x) * 180 / Math.PI;
   // 2. Check for a threshold to reduce shakiness at low mouse velocity
-  if (mouseVelocity > 20) {
+  if (mouseVelocity > 5) {
     currentAngle = angle;
   }
   // 3. Create a transformation string for rotation
