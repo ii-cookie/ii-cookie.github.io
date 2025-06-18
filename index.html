@@ -37,7 +37,10 @@
         </nav>
         <div id="home"></div>
         <div class="header-text">
-            <img src="images\discord_pfp.png" alt="discord pfp">
+            <div id="pfp" >
+                <!-- <script src="tilt_effect.js"></script> -->
+                <img src="images\discord_pfp.png" alt="discord pfp"" data-tilt data-tilt-max="50">
+            </div>
             <h1>Hi, I'm <span>cookie</span>I do things online</h1>
         </div>
     </div>
@@ -252,7 +255,6 @@
 
     function openmenu(){
         sidemenu.style.transform = "translateX(-200px)"
-        // sidemenu.style.right = "0"
     }
 
     function closemenu(){
@@ -287,5 +289,6 @@ const height =
         scrollProgress.style.width = `${(scrollTop / height) * 100}%`;
     });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 </body>
 </html>

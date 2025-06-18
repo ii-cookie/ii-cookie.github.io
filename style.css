@@ -10,8 +10,11 @@
     --title_color: #c92873;
     --subtitle_color: #dd1985;
     --theme_color: #ff004f;
-    --highlight-color: rgb(151, 186, 226);
-    --highlight-color-text: rgb(255, 0, 85);
+    --highlight-color: #97bae2;
+    --highlight-color-text: #ff0055;
+    --movex: 10px;
+    --movey: -50px;
+    --rotate: 0deg;
 }
 
 ::-moz-selection { 
@@ -191,13 +194,26 @@ nav ul li a:hover::after{
     border-radius: 50%;
     border: 10px solid;
     animation: pfp-color-change 5s infinite;
+    /* &:hover{
+        animation: pfp-run 2s infinite;
+    } */
+    
 }
+/* .header-text img:hover {
+    animation: pfp-run 0.5s ease forwards; 
+} */
+
 @keyframes pfp-color-change{
     0% { color: rgb(255, 123, 123); }
     33% { color: var(--theme_color); }
     66% { color: rgb(214, 54, 115); }
     100% { color: rgb(255, 123, 123); }
 }
+/* @keyframes pfp-run{
+    0%   {left:0px; top:0px;}
+    50% {transform: rotate(var(--rotate)) translateX(50px);}
+    100% {transform: rotate(360deg) translate(500px, 500px);}
+} */
 
 .header-text h1 span{
     background-clip: text;
