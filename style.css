@@ -31,14 +31,48 @@ html{
     scroll-behavior: smooth;
 }
 
+.circle, .circle::after{
+    --circle-size: 40px;
+    position: fixed;
+    height: var(--circle-size);
+    width: var(--circle-size);
+    border: 3px solid white;
+    border-radius: 100%;
+    top: calc(var(--circle-size)/2*-1);
+    left: calc(var(--circle-size)/2*-1);
+    pointer-events: none;
+    animation: cursor-color-change 3s infinite;
+    z-index: 100000000000000000000000;
+}
+
+.circle::after{
+    filter: blur(5rem);
+}
+
+
+@keyframes cursor-color-change{
+    0%{border-color: #FF90BB;}
+    25%{border-color: #FFC1DA;}
+    50%{border-color: #F8F8E1;}
+    75%{border-color: #8ACCD5;}
+    100%{border-color: #FF90BB;}
+}
+
+
+
 body{
     font-family: "Caveat Brush", cursive;
     font-weight: 400;
     font-style: normal;
     background: var(--bg_color);
     color: #fff;
-
+    cursor: none !important;
 }
+
+body a{
+    cursor:none !important;
+}
+
 #header{
     width: 100%;
     height: 100vh;
@@ -72,7 +106,7 @@ nav{
     z-index: 10000;
     animation: bg-color-change 5s infinite;
 }
-/* failed blur, idk why */
+/* failed blur, idk why ........nvm it works*/
 #scroll-progress::before{   
     content: '';
     position: absolute;
@@ -354,7 +388,7 @@ nav ul li a:hover::after{
     margin-right: 90px;
     font-size: 170px; /* Larger font size for all tabs */
     font-weight: 600; /* Bolder text */
-    cursor: pointer;
+    /* cursor: pointer; */
     position: relative;
     transition: 0.5s;
     &:hover{
@@ -660,7 +694,7 @@ nav ul li a:hover::after{
 
 .btn.btn2:hover{
     transform: translateY(-5px);
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .contact-right form{
@@ -716,6 +750,10 @@ nav .fa-solid{
 }
 
 @media only screen and (max-width: 888px){
+
+    .circle{
+        visibility: hidden;
+    }
     
 
     #header{
@@ -765,7 +803,7 @@ nav .fa-solid{
         position: absolute;
         top: 45px;
         left: 25px;
-        cursor: pointer;
+        /* cursor: pointer; */
     }
     .about-col-1, .about-col-2{
         flex-basis: 100%;
