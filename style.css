@@ -281,7 +281,7 @@ nav ul li a:hover::after{
 } */
 
 .header-text h1 span{
-    margin: -5px 40%;
+    margin: -5px 10%;
     background-clip: text;
     display: block;
     background-image: linear-gradient(#eee, #000000);
