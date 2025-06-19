@@ -448,6 +448,7 @@ nav ul li a:hover::after{
 }
 
 .logos{
+    margin-top: 30px;
     margin-left: 5%;
     margin-right: 5%;
     background-color: var(--menu_color);
