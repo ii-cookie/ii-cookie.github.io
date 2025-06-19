@@ -1,5 +1,7 @@
 //taken from https://codepen.io/Juxtopposed/pen/GRPRPyR
 
+import * as THREE from 'three';
+
 // variables
 const imageContainer = document.getElementsById("imageContainer");
 const imageElement = document.getElementById("myImage");
