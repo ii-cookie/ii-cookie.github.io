@@ -46,7 +46,11 @@
         </nav>
         <!-- <div id="home"></div> -->
         <div class="header-text">
-            <div class="pfp" data-tilt data-tilt-max="90" data-tilt-reset="true" data-tilt-scale="1.2" data-tilt data-tilt-glare data-tilt-max-glare="1" data-tilt data-tilt-reverse="false" data-tilt-speed="10000" data-tilt-transform-style="preserve-3d">
+            <div class="pfp" data-tilt data-tilt-max="90" data-tilt-reset="true" data-tilt-scale="1.2" 
+            data-tilt data-tilt-glare data-tilt-max-glare="1" data-tilt data-tilt-reverse="false" 
+            data-tilt-speed="10000" data-tilt-transform-style="preserve-3d" 
+            data-tilt-gyroscopeMinAngleX="-90" data-tilt-gyroscopeMaxAngleX="90"
+            data-tilt-gyroscopeMinAngleY="-90" data-tilt-gyroscopeMaxAngleY="90">
                 <!-- <script src="tilt_effect.js"></script> -->
                 <img src="images\discord_pfp.png" alt="discord pfp">
             </div>
@@ -105,7 +109,7 @@
     </div>
     <div class="logos">
         <div class="marquee">
-            <div class="track">
+            <div class="track" id="track">
                 <img src="images/kurukuru.gif" alt=""width="128">  
                 <img src="images/kurukuru.gif" alt=""width="128">    
                 <img src="images/kurukuru.gif" alt=""width="128">  
@@ -274,6 +278,13 @@
         sidemenu.style.transform = "translateX(200px)"
     }
 </script>
+<script>
+    var kurukuru = document.getElementById("track");
+    kurukuru.addEventListener("contextmenu", function(event) {
+        event.preventDefault();
+    });
+</script>
+
 <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbz4xBJF6XgJwLeo30jvBse0ru9xW60BHIX06Az_kIPmen6tnGCM3zT6q_NCBGRj4x2N/exec'
     const form = document.forms['submit-to-google-sheet']
