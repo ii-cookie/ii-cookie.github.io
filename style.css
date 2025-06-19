@@ -807,6 +807,7 @@ nav .fa-solid{
         padding-top: 50px;
         background: var(--bg_color);
         border: 5px solid var(--theme_color);
+        border-radius: 15px;
         z-index: 2;
     }
     nav ul li{
@@ -833,7 +834,7 @@ nav .fa-solid{
     .about-col-2{
         margin-left: 5%;
         margin-right: 5%;
-        font-size: 14px;
+        font-size: 13px;
     }
     .tab-links{
         font-size: 16px;
