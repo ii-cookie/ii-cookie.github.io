@@ -262,6 +262,10 @@
 
     var sidemenu = document.getElementById("sidemenu");
 
+    sidemenu.addEventListener("contextmenu", function(event) {
+        event.preventDefault();
+    });
+
     function openmenu(){
         sidemenu.style.transform = "translateX(-200px)"
     }
