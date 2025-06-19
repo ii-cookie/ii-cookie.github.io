@@ -364,6 +364,7 @@ nav ul li a:hover::after{
     &:hover{
         filter: saturate(100%);
     }
+    padding-bottom: 30px;
 }
 
 .about-col-1 img{
