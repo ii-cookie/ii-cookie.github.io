@@ -63,6 +63,8 @@ fetchData().then(result => {
     const xp = result.xps
     const dataArray = createDataArray(lang, xp)
     console.log('Data Array:', dataArray)
+    //might as well sort it
+    const sorted_dataArray = dataArray.sort((a,b) => b.value - a.value)
 }).catch(error => {
     console.error('failed to get dataArray:', error)
 })
