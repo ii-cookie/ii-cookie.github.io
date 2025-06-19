@@ -1,5 +1,7 @@
 //taken from https://codepen.io/githiro/pen/AgZGEV
 
+
+
 $(function(){
     $("#pieChart").drawPieChart([
       { title: "Tokyo",         value : 180,  color: "#02B3E7" },
