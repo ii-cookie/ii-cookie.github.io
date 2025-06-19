@@ -37,6 +37,15 @@ function getRandomColor(){
     return color
 }
 
+//https://stackoverflow.com/questions/43044/algorithm-to-randomly-generate-an-aesthetically-pleasing-color-palette
+function getRandomPastelColor(  ){
+    let color = 'rgb('
+    let red = Math.floor(Math.random()*255)
+    let green = Math.floor(Math.random()*255)
+    let blue = Math.floor(Math.random()*255)
+
+
+}
 
 
 function createDataArray(languages, xps){
