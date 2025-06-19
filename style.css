@@ -359,12 +359,33 @@ nav ul li a:hover::after{
 
 .about-col-1{
     flex-basis: 35%;
-    filter: saturate(0);
+    transition: all ease 0.5s;
+    padding-bottom: 30px;
+}
+
+#user_image_container{
+    position: relative;
+    width: 800px;
+    height: 800px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    max-width: 100%;
+    filter: saturate(40%);
     transition: all ease 0.5s;
     &:hover{
         filter: saturate(100%);
     }
-    padding-bottom: 30px;
+}
+
+#user_image_container > *{
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
 }
 
 .about-col-1 img{
@@ -437,10 +458,12 @@ nav ul li a:hover::after{
 .tab-contents ul li span{
     color: #fff;
     font-size: 30px;
+   
 }
 
 .tab-contents{
     display: none;
+    
 }
 
 .tab-contents.active-tab{
