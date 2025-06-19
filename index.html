@@ -32,7 +32,11 @@
         <nav>
             
             <!-- <img src="images/logo.png" alt="logo" height="90" width="240"> -->
-            <a href="https://youtu.be/dQw4w9WgXcQ?si=SAAeXF6ZH7q0R_4a" id="logo-section"><img src="images/favicon.jpg" width="60px" height="60px" id="logo">iicookie</a>
+            <a href="https://youtu.be/dQw4w9WgXcQ?si=SAAeXF6ZH7q0R_4a" id="logo-section">
+                <div id="imageContainer" >
+                    <img id="myImage" src="images/favicon.jpg" width="60px" height="60px" id="logo">
+                </div>
+                iicookie</a>
             <ul id="sidemenu">
                 <li><a href="#home">Home</a> </li>
                 <li><a href="#about">About</a></li>
@@ -50,9 +54,10 @@
             data-tilt-speed="10000" data-tilt-transform-style="preserve-3d" 
             data-tilt-gyroscopeMinAngleX="-90" data-tilt-gyroscopeMaxAngleX="90"
             data-tilt-gyroscopeMinAngleY="-90" data-tilt-gyroscopeMaxAngleY="90"
-            data-tilt data-tilt-startX="40" data-tilt-startY="-10" data-tilt-reset-to-start="true">
+            data-tilt data-tilt-startX="40" data-tilt-startY="-10" data-tilt-reset-to-start="true"
+            id="pfp">
                 <!-- <script src="tilt_effect.js"></script> -->
-                <img src="images\discord_pfp.png" alt="discord pfp">
+                <img id="pfp_image" src="images\discord_pfp.png" alt="discord pfp">
             </div>
             <h1>Hi, I'm <span>cookie</span>I do things online</h1>
         </div>
@@ -315,5 +320,6 @@ const height =
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 <script type="module" src="distort+grid_effect.js"></script>
+<script type="module" src="glitch_effect.js"></scripttype></script>
 </body>
 </html>

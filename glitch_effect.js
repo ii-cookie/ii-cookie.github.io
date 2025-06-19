@@ -1,8 +1,8 @@
 //taken from https://codepen.io/Juxtopposed/pen/GRPRPyR
 
 // variables
-const imageContainer = document.getElementsById("logo-section");
-const imageElement = document.getElementById("logo");
+const imageContainer = document.getElementsById("imageContainer");
+const imageElement = document.getElementById("myImage");
 
 let scene, camera, renderer, planeMesh;
 let isHovered = false;
