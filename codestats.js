@@ -25,11 +25,44 @@ async function fetchData() {
 }
 
 
+function getRandomColor(){
+    const letters = '0123456789ABCDEF'
+    let color = '#'
+    for (let i = 0; i<6; i++){
+        color += letters[Math.floor(Math.random()*16)]
+    }
+}
+
+
+
+function createDataArray(languages, xps){
+    if(languages.length !== xps.length){
+        console.error('xp and language not the same array length')
+        return []
+    }
+
+    return languages.map((language, index) => ({
+        title: language,
+        value: xps[index],
+        color: getRandomColor()
+    }))
+}
+
+
+// fetchData().then(result => {
+//     const lang = result.languages; // Extract language names
+//     const xp = result.xps; // Extract XP values
+//     console.log('Languages:', lang); // Array of language names
+//     console.log('XP:', xp); // Array of XP numbers
+// }).catch(error => {
+//     console.error('Failed to fetch data:', error);
+// });
+
 fetchData().then(result => {
-    const lang = result.languages; // Extract language names
-    const xp = result.xps; // Extract XP values
-    console.log('Languages:', lang); // Array of language names
-    console.log('XP:', xp); // Array of XP numbers
+    const lang = result.languages
+    const xp = result.xps
+    const dataArray = createDataArray(lang, xp)
+    console.log('Data Array:', dataArray)
 }).catch(error => {
-    console.error('Failed to fetch data:', error);
-});
+    console.error('failed to get dataArray:', error)
+})

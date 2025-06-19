@@ -6,10 +6,10 @@ $(function(){
     $("#pieChart").drawPieChart([
       { title: "Tokyo",         value : 180,  color: "#02B3E7" },
       { title: "San Francisco", value:  60,   color: "#CFD3D6" },
-      { title: "London",        value : 50,   color: "#736D79" },
+      { title: "London",        value : 190,   color: "#736D79" },
       { title: "New York",      value:  30,   color: "#776068" },
       { title: "Sydney",        value : 20,   color: "#EB0D42" },
-      { title: "Berlin",        value : 20,   color: "#FFEC62" },
+      { title: "Berlin",        value : 90,   color: "#FFEC62" },
       { title: "Osaka",         value : 7,    color: "#04374E" }
     ]);
   });
