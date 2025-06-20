@@ -38,13 +38,35 @@ function getRandomColor(){
 }
 
 //https://stackoverflow.com/questions/43044/algorithm-to-randomly-generate-an-aesthetically-pleasing-color-palette
-function getRandomPastelColor(  ){
-    let color = 'rgb('
+function getRandomPastelColor(){
     let red = Math.floor(Math.random()*255)
     let green = Math.floor(Math.random()*255)
     let blue = Math.floor(Math.random()*255)
 
+    for (let i = 0; i<1; i++){
+      // r = Math.floor(Math.random()*255)
+      // g = Math.floor(Math.random()*255)
+      // b = Math.floor(Math.random()*255)
+      r = 255
+      g = 255
+      b = 255
+      red = Math.floor((r + red) / 2)
+      green = Math.floor((g + green) / 2)
+      blue = Math.floor((b + blue) / 2)
+    }
 
+    color = 'rgb(' + red.toString() + ', ' + blue.toString() + ', ' + green.toString() + ')'
+
+    return color
+}
+
+function getGooglePaletteColor(size, index){
+  var sq = palette('tol-sq', size);
+  var rb = palette('tol-rainbow', size)
+  var dv = palette('tol-dv', size +10)
+  reverse_seq = sq.reverse()
+  reverse_rb = rb.reverse()
+  return '#' + dv[index].toString()
 }
 
 
@@ -56,8 +78,10 @@ function createDataArray(languages, xps){
 
     return languages.map((language, index) => ({
         title: language,
-        value: xps[index],
-        color: getRandomColor()
+        value: xps[index]
+        // // color: getRandomColor()
+        // // color: getRandomPastelColor()
+        // color: getGooglePaletteColor(languages.length, index)
     }))
 }
 
@@ -336,6 +360,10 @@ $(function(){
         const sorted_dataArray = dataArray.sort((a,b) => b.value - a.value)
         console.log(sorted_dataArray)
         console.log(sorted_dataArray.title)
+        
+        sorted_dataArray.map(function(e, index){
+          e.color = getGooglePaletteColor(sorted_dataArray.length, index)
+        })
 
         $('#pieChart').drawPieChart(sorted_dataArray)
 

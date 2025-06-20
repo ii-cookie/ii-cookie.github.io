@@ -472,6 +472,7 @@ nav ul li a:hover::after{
 }
 .chart {
     /* display: flex; */
+    display: inline-block;
     position: relative;
     width: 450px;
     height: 450px;
@@ -909,6 +910,9 @@ nav .fa-solid{
     .tab-links{
         font-size: 16px;
         margin-right: 20px;
+    }
+    .chart{
+        padding: 0 20%;
     }
     .contact-left, .contact-right{
         flex-basis: 100%;
