@@ -1,4 +1,4 @@
-//taken from https://codepen.io/Juxtopposed/pen/MWZWpVQ
+//reference https://codepen.io/Juxtopposed/pen/MWZWpVQ
 
 import * as THREE from 'three';
 

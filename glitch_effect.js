@@ -1,4 +1,4 @@
-//taken from https://codepen.io/Juxtopposed/pen/GRPRPyR
+//reference to https://codepen.io/Juxtopposed/pen/GRPRPyR
 
 import * as THREE from 'three';
 
