@@ -9,17 +9,102 @@
 }
 
 :root{
-    --bg_color: #45122b;
+    /* new color theme*/
+    /* general use (dark mode) */
+    --bg-dark: hsl(0,0%,0%);
+    --bg: hsl(0,0%,5%);
+    --bg-light: hsl(0,0%,10%);
+    --text: hsl(0,0%,95%);
+    --text-muted: hsl(0,0%,70%);
+    --hover-color: hsl(341, 100%, 50%);
+    --theme_color: hsl(341, 100%, 50%);
+
+    --cursor-color: hsl(0,0%,100%);
+    --cursor-color-change-1: hsl(336, 100%, 78%);
+    --cursor-color-change-2: hsl(338, 100%, 88%);
+    --cursor-color-change-3: hsl(60, 59%, 93%);
+    --cursor-color-change-4: hsl(187, 49%, 69%);
+
+    --pfp-color: hsl(341, 100%, 50%);
+    --pfp-color-change-1: hsl(350, 100%, 84%);
+    --pfp-color-change-2: hsl(178, 62%, 77%);
+    --pfp-color-change-3: hsl(136, 84%, 84%);
+    --pfp-color-change-4: hsl(37, 87%, 88%);
+
+    --project-layer-color-up: rgba(255,255,255,0.4);
+    --project-layer-color-down: hsl(0,0%,0%);
+
+    /* old color theme*/
+    /* --bg_color: #45122b;
     --menu_color: #a7456e;
     --title_color: #c92873;
     --subtitle_color: #dd1985;
     --theme_color: #ff004f;
     --highlight-color: #97bae2;
+    --highlight-color-text: #ff0055; */
+
+    /* direct transfer to old TEMP SOLUTION, NEED TO CHANGE ALL OLD VARIABLES TO NEW*/
+    --bg_color: var(--bg-dark);
+    --menu_color: var(--text);
+    --title_color: var(--text);
+    --subtitle_color: var(--text);
+    
+    --highlight-color: #97bae2;
     --highlight-color-text: #ff0055;
-    --movex: 10px;
-    --movey: -50px;
-    --rotate: 0deg;
 }
+body.light{
+    /* light mode */
+    --bg-dark: hsl(0,0%,90%);
+    --bg: hsl(0,0%,95%);
+    --bg-light: hsl(0,0%,100%);
+    --text: hsl(0,0%,5%);
+    --text-muted: hsl(0,0%,30%);
+    --hover-color: hsl(341, 100%, 50%);
+    --theme_color: hsl(341, 100%, 50%);
+
+    --cursor-color: hsl(0, 0%, 100%);
+    --cursor-color-change-1: hsl(336, 100%, 22%);
+    --cursor-color-change-2: hsl(338, 100%, 12%);
+    --cursor-color-change-3: hsl(60, 59%, 7%);
+    --cursor-color-change-4: hsl(187, 49%, 31%);
+
+    /* direct transfer to old */
+    --bg_color: var(--bg-dark);
+    --menu_color: var(--text);
+    --title_color: var(--text);
+    --subtitle_color: var(--text);
+
+    --project-layer-color-up: rgba(0,0,0,0.4);
+    --project-layer-color-down:white;
+
+    transition: 0.5s;
+
+    
+    nav ul li{
+        align-self: center;
+        border-radius: 15px;
+        display: inline-block;
+        list-style: none;
+        margin: 15px 10px;
+        transition: 0.2s;
+        
+        &:hover{
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 3px rgba(255, 255, 255, 0.4) ;
+        }
+        &:active{
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4) inset, -3px -3px 3px rgba(255, 255, 255, 0.4) inset;
+        }
+    }
+
+    .pfp{
+        transition: 0.5s;
+    }
+
+    .pfp::after, .pfp::before{
+        background-image: conic-gradient(from var(--angle), white, black, white, black, white);
+    }
+}
+
 
 ::-moz-selection { 
     color: var(--highlight-color-text);
@@ -40,15 +125,14 @@ html{
     position: fixed;
     height: var(--circle-size);
     width: var(--circle-size);
-    background-color: rgb(255, 255, 191);
-    border: 5px solid white;
+    background-color: var(--cursor-color);
+    border: 5px solid var(--cursor-color);
     border-radius: 100%;
     top: calc(var(--circle-size)/2*-1);
     left: calc(var(--circle-size)/2*-1);
     pointer-events: none;
     animation: cursor-color-change 3s infinite;
     z-index: 1000000000;
-    
 }
 
 .circle::before{
@@ -56,7 +140,7 @@ html{
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: conic-gradient(from var(--angle), #FFAEBC, #A0E7E5, #B4F8C8, #FBE7C6, #FFAEBC);
+    /* background-image: conic-gradient(from var(--angle), #FFAEBC, #A0E7E5, #B4F8C8, #FBE7C6, #FFAEBC); */
     top: 50%;
     left: 50%;
     translate: -50% -50%;
@@ -69,11 +153,11 @@ html{
 
 
 @keyframes cursor-color-change{
-    0%{border-color: #FF90BB;}
-    25%{border-color: #FFC1DA;}
-    50%{border-color: #F8F8E1;}
-    75%{border-color: #8ACCD5;}
-    100%{border-color: #FF90BB;}
+    0%{border-color: var(--cursor-color-change-1);}
+    25%{border-color: var(--cursor-color-change-2);}
+    50%{border-color: var(--cursor-color-change-3);}
+    75%{border-color: var(--cursor-color-change-4);}
+    100%{border-color: var(--cursor-color-change-1);}
 }
 
 
@@ -82,8 +166,9 @@ body{
     font-family: "Caveat Brush", cursive;
     font-weight: 400;
     font-style: normal;
-    background: var(--bg_color);
-    color: #fff;
+    background: var(--bg-dark);
+    color: var(--text-muted);
+    transition: 0.5s;
     /* cursor: none !important; */
 }
 
@@ -94,7 +179,7 @@ body{
 #header{
     width: 100%;
     height: 100vh;
-    background-image: url(images/background.png);
+    /* background-image: url(images/background.png); */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -102,21 +187,7 @@ body{
 .container{
     padding: 20px 5%;
 }
-nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 999;
-    margin: 0 5%;
-    /* backdrop-filter:url(#displacementFilter4); */
-    mask: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,1), rgba(0,0,0,0)) ;
-    backdrop-filter: blur(5px);
-}
+
 #scroll-progress, #scroll-progress::before{
     position: fixed;
     top: 0;
@@ -142,6 +213,23 @@ nav{
     filter: blur(1.5rem);
 }
 
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0 5%;
+    /* backdrop-filter:url(#displacementFilter4); */
+    mask: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,1), rgba(0,0,0,0)) ;
+    backdrop-filter: blur(5px);
+}
+
+
 @keyframes bg-color-change{
     0% { background-color: rgb(255, 123, 123); }
     33% { background-color: rgb(123, 236, 117); }
@@ -154,7 +242,7 @@ nav a{
     display: flex;
     font-size: 50px;
     text-decoration: none;
-    background-color: var(--menu_color);
+    background-color: var(--text);
     background: linear-gradient(to right rgba(0,0,0,1), rgba(0,0,0,0));
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -185,6 +273,15 @@ nav a i{
     padding-bottom: auto;
     padding: auto;
 }
+
+.fa-solid.fa-circle-half-stroke{
+    visibility: visible;
+    display: block;
+    font-size: 25px;
+    background-color: transparent;
+    color: var(--text);
+    transition: 0.5s;
+}
 .logo{
     width: 100px ;
     
@@ -194,19 +291,19 @@ nav ul{
     transition: 0.5s;
 }
 nav ul li{
-    
+    align-self: center;
     border-radius: 15px;
     display: inline-block;
     list-style: none;
     margin: 15px 10px;
     transition: 0.2s;
-    
     &:hover{
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4), -2px -2px 2px rgba(255, 0, 179, 0.4) ;
+        box-shadow: 3px 3px 3px rgba(255, 255, 255, 0.4) inset, -3px -3px 3px rgba(0, 0, 0, 0.4) inset;
     }
     &:active{
-        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4) inset, -3px -3px 3px rgba(255, 0, 179, 0.4) inset;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4) inset, -3px -3px 3px rgba(255, 255, 255, 0.4) inset;
     }
+    
 }
 
 
@@ -215,7 +312,7 @@ nav ul li a{
     animation: none;
     border: none;
     padding: 10px 20px;
-    color: var(--menu_color);
+    color: var(--text);
     text-decoration: none;
     font-size: 30px;
     position: relative;
@@ -223,7 +320,7 @@ nav ul li a{
     border-radius: 20px;
     transition: 0.5s;
     &:hover{
-        background-color: #ff004f;
+        background-color: var(--hover-color);
         color: white;
     }
 }
@@ -232,19 +329,19 @@ nav ul li a{
 
 } */
 
+/* bar under the nav buttons (not used) */
 nav ul li a::after{
     content: '';
     width: 0;
     height: 3px;
-    background: #ff00ae;
+    background: var(--hover-color);
     position: absolute;
     left: 0;
     bottom: -6px;
     transition: 0.5s;
 }
-
 nav ul li a:hover::after{
-    background-color: rgb(255, 255, 255);
+    background-color: var(--hover-color);
     /* width: 100%; */
 }
 
@@ -253,7 +350,7 @@ nav ul li a:hover::after{
     align-self: center;
     margin-left: auto;
     margin-right: auto;
-    color: #f52db2;
+    color: var(--pfp-color);
     background: transparent;
     margin-top: 100px;
     font-size: 200px;
@@ -263,7 +360,7 @@ nav ul li a:hover::after{
 }
 
 .header-text h1{
-    color: #fff;
+    color: var(--text);
     font-size: 30px;
     margin-top: min(70px, 5%) ;
     text-align: center;
@@ -290,7 +387,7 @@ nav ul li a:hover::after{
     border: 10px solid;
     width: 280px;
     height: 280px;
-
+    transition: 0.5s;
 }
 .pfp *{
     transform: translateZ(50px)
@@ -300,12 +397,17 @@ nav ul li a:hover::after{
     initial-value: 0deg;
     inherits: false;
 }
+/* @property --cursor-color-change-11{
+    syntax: "<color>";
+    inherits: false;
+    initial-value: black;
+} */
 .pfp::after, .pfp::before{
     content: '';
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: conic-gradient(from var(--angle), #FFAEBC, #A0E7E5, #B4F8C8, #FBE7C6, #FFAEBC);
+    background-image: conic-gradient(from var(--angle), black, white, black, white, black);
     top: 50%;
     left: 50%;
     translate: -50% -50%;
@@ -326,9 +428,6 @@ nav ul li a:hover::after{
     filter: blur(1.5rem);
     opacity: 0.5;
 }
-/* .header-text img:hover {
-    animation: pfp-run 0.5s ease forwards; 
-} */
 
 @keyframes pfp-color-change{
     0% { color: rgb(255, 123, 123); }
@@ -413,7 +512,7 @@ nav ul li a:hover::after{
 .sub-title{
     font-size: 80px;
     font-weight: 600;
-    color: var(--subtitle_color);
+    color: var(--text);
 }
 
 .tab-titles{
@@ -556,6 +655,7 @@ nav ul li a:hover::after{
 /* --------------services----------- */
 #services{
     padding: 30px 0;
+    color: var(--text-muted);
 }
 .services-list{
     display:grid;
@@ -565,7 +665,7 @@ nav ul li a:hover::after{
 }
 
 .services-list div{
-    background: #8d4661;
+    background: var(--bg);
     padding: 40px;
     font-size: 17px;
     font-weight: 300;
@@ -574,6 +674,7 @@ nav ul li a:hover::after{
 }
 
 .services-list div i{
+    color: var(--text);
     font-size: 50px;
     margin-bottom: 30px;
 }
@@ -596,6 +697,7 @@ nav ul li a:hover::after{
 }
 
 .services-list div a i{
+    color: #858cd9;
     font-size: 16px;
 }
 
@@ -630,7 +732,7 @@ nav ul li a:hover::after{
 .layer{
     width: 100%;
     height: 0%;
-    background: linear-gradient(rgba(0,0,0,0.6), #ff004f);
+    background: linear-gradient(var(--project-layer-color-up), var(--project-layer-color-down));
     border-radius: 10px;
     position: absolute;
     left: 0;
@@ -644,6 +746,7 @@ nav ul li a:hover::after{
     text-align: center;
     font-size: 16px;
     transition: height 0.5s;
+    color: var(--text-muted);
 }
 
 .layer h3{
@@ -677,11 +780,12 @@ nav ul li a:hover::after{
     display: block;
     margin: 50px auto;
     width: fit-content;
-    border: 1px solid #ff004f;
+    border: 1px solid var(--theme_color);
     padding: 14px 50px;
     border-radius: 6px;
     text-decoration: none;
-    color: #fff;
+    background: var(--bg-light);
+    color: var(--text);
     transition: background 0.5s;
 }
 
@@ -720,7 +824,7 @@ nav ul li a:hover::after{
 }
 
 .contact-left p a{
-    color: #ffffff;
+    color: var(--text);
     text-decoration: none;
     font-size: 18px;
     transition: transform 0.5s;
@@ -737,7 +841,7 @@ nav ul li a:hover::after{
     text-decoration: none;
     font-size: 30px;
     margin-right: 15px;
-    color: #7d787b;
+    color: var(--text-muted);
     display: inline-block;
     transition: transform 0.5s;
 }
@@ -755,12 +859,10 @@ nav ul li a:hover::after{
     font-family: "Caveat Brush", cursive;
     font-weight: 400;
     font-style: normal;
-    background: var(--bg_color);
-    
-    background-color: transparent;
+    background: var(--bg-light);
+    color: var(--text);
     border: 3px solid #ff004f;
     border-radius: 20px;
-    color: white;
     background-image: url(images/nav-bg-fill.png);
     background-repeat: repeat-x;
     background-position: 20%-100%;
@@ -831,15 +933,18 @@ form btn2{
 }
 
 /* -----------------css for small screens------------- */
-nav .fa-solid{
+nav .fa-solid.fa-bars{
+    display: none;
+}
+nav .fa-solid.fa-xmark{
     display: none;
 }
 
 @media only screen and (max-width: 888px){
 
-    .circle{
+    /* .circle{
         visibility: hidden;
-    }
+    } */
     
 
     #header{

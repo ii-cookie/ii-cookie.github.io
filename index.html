@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/e8d8682975.js" crossorigin="anonymous"></script>
+    <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
 
     <link rel = "icon" type = "image/jpg" href = "images/favicon.jpg">
     <script type="importmap">
@@ -46,6 +47,11 @@
                 <li><a href="#contact">Contact</a></li>
                 <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
             </ul>
+            
+                
+            <i class="fa-solid fa-circle-half-stroke" onclick="theme_toggle()"></i>
+            <!-- <button onclick="theme_toggle()">TOGGLLE</button> -->
+            
             <i class="fa-solid fa-bars" onclick="openmenu()"></i>
             
         </nav>
@@ -116,6 +122,16 @@
         </div>
     </div>
     <div class="statistics">
+        <h1 class="sub-title">statistics</h1>
+
+        <section>
+            <div class="container1" id="skills">
+                <h1 class="heading">programming</h1>
+                <div class="Technical-bars">
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </section>
         
         <div id="pieChart" class="chart"></div>
     </div>
@@ -333,6 +349,11 @@ const height =
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.1/palette.js"></script>
 <script src="codestats_piechart.js"></script>
+<script>
+    function theme_toggle(){
+        document.body.classList.toggle("light");
+    }
+</script>
 
 </body>
 </html>
