@@ -321,6 +321,8 @@ nav a i{
 }
 nav ul{
     transition: 0.5s;
+    position: absolute;
+    right: 10%;
 }
 nav ul li{
     align-self: center;
