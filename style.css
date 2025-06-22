@@ -311,7 +311,7 @@ nav a i{
     display: block;
     font-size: 25px;
     background-color: transparent;
-    color: var(--primary);
+    color: var(--text);
     transition: 0.5s;
 }
 .logo{
