@@ -11,11 +11,26 @@
 :root{
     /* new color theme*/
     /* general use (dark mode) */
-    --bg-dark: hsl(0,0%,0%);
-    --bg: hsl(0,0%,5%);
-    --bg-light: hsl(0,0%,10%);
-    --text: hsl(0,0%,95%);
-    --text-muted: hsl(0,0%,70%);
+    --bg-dark: hsl(323 100% 2%);
+    --bg: hsl(318 79% 5%);
+    --bg-light: hsl(318 51% 9%);
+    --text: hsl(321 100% 99%);
+    --text-muted: hsl(320 50% 73%);
+    --highlight: hsl(319 29% 41%);
+    --border: hsl(318 38% 30%);
+    --border-muted: hsl(316 59% 19%);
+    --primary: hsl(320 50% 73%);
+    --secondary: hsl(149 41% 62%);
+    --danger: hsl(9 53% 66%);
+    --warning: hsl(51 35% 50%);
+    --success: hsl(149 34% 54%);
+    --info: hsl(217 59% 67%);
+
+    --gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
+    --gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
+    --border-card: solid 1px var(--border);
+    --shadow: 0px 2px 2px hsla(0,0%,0%,0,07), 0px, 4px 4px hsla(0,0%,0%,0,15)
+
     --hover-color: hsl(341, 100%, 50%);
     --theme_color: hsl(341, 100%, 50%);
 
@@ -32,7 +47,7 @@
     --pfp-color-change-4: hsl(37, 87%, 88%);
 
     --project-layer-color-up: rgba(255,255,255,0.4);
-    --project-layer-color-down: hsl(0,0%,0%);
+    --project-layer-color-down: var(--primary);
 
     /* old color theme*/
     /* --bg_color: #45122b;
@@ -54,11 +69,26 @@
 }
 body.light{
     /* light mode */
-    --bg-dark: hsl(0,0%,90%);
-    --bg: hsl(0,0%,95%);
-    --bg-light: hsl(0,0%,100%);
-    --text: hsl(0,0%,5%);
-    --text-muted: hsl(0,0%,30%);
+    --bg-dark: hsl(322 88% 92%);
+    --bg: hsl(322 100% 97%);
+    --bg-light: hsl(322 100% 100%);
+    --text: hsl(315 100% 5%);
+    --text-muted: hsl(318 38% 30%);
+    --highlight: hsl(321 100% 100%);
+    --border: hsl(320 27% 53%);
+    --border-muted: hsl(320 38% 65%);
+    --primary: hsl(318 38% 30%);
+    --secondary: hsl(160 100% 13%);
+    --danger: hsl(8 40% 42%);
+    --warning: hsl(52 82% 24%);
+    --success: hsl(154 58% 29%);
+    --info: hsl(217 42% 43%);
+    
+    --gradient: linear-gradient(0deg, var(--bg) 95%, var(--bg-light));
+    --gradient-hover: linear-gradient(0deg, var(--bg), var(--bg-light));
+    
+    --border-card: solid 1px var(--bg);
+
     --hover-color: hsl(341, 100%, 50%);
     --theme_color: hsl(341, 100%, 50%);
 
@@ -74,8 +104,8 @@ body.light{
     --title_color: var(--text);
     --subtitle_color: var(--text);
 
-    --project-layer-color-up: rgba(0,0,0,0.4);
-    --project-layer-color-down:white;
+    --project-layer-color-up: var(--primary) 40%;
+    --project-layer-color-down: var(--bg-dark);
 
     transition: 0.5s;
 
@@ -242,7 +272,7 @@ nav a{
     display: flex;
     font-size: 50px;
     text-decoration: none;
-    background-color: var(--text);
+    background-color: var(--primary);
     background: linear-gradient(to right rgba(0,0,0,1), rgba(0,0,0,0));
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -321,7 +351,7 @@ nav ul li a{
     border-radius: 20px;
     transition: 0.5s;
     &:hover{
-        background-color: var(--hover-color);
+        background-color: var(--highlight-color-text);
         color: white;
     }
 }
@@ -361,7 +391,7 @@ nav ul li a:hover::after{
 }
 
 .header-text h1{
-    color: var(--text);
+    color: var(--primary);
     font-size: 30px;
     margin-top: min(70px, 5%) ;
     text-align: center;
@@ -451,7 +481,7 @@ nav ul li a:hover::after{
 
 #about{
     padding: 80px 0;
-    color: #c06e87;
+    color: var(--text-muted);
 }
 
 .row{
@@ -519,17 +549,17 @@ nav ul li a:hover::after{
 .tab-titles{
     display: flex;
     margin: 20px 0 40px;
-
+    color: var(--text);
 }
 
 .tab-links {
-    color: var(--menu_color);
     margin-right: 90px;
     font-size: 170px; /* Larger font size for all tabs */
     font-weight: 600; /* Bolder text */
     /* cursor: pointer; */
     position: relative;
     transition: 0.5s;
+    color: var(--text);
     &:hover{
         color: var(--theme_color);
     }
@@ -556,10 +586,11 @@ nav ul li a:hover::after{
     list-style: none;
     margin: 20px 0;
     font-size: 27px;
+    color: var(--text-muted);
 }
 
 .tab-contents ul li span{
-    color: #fff;
+    color: var(--text);
     font-size: 30px;
    
 }
@@ -666,7 +697,9 @@ nav ul li a:hover::after{
 }
 
 .services-list div{
-    background: var(--bg);
+    background: var(--gradient);
+    border: var(--border-card);
+    box-shadow: var(--shadow);
     padding: 40px;
     font-size: 17px;
     font-weight: 300;
@@ -703,7 +736,7 @@ nav ul li a:hover::after{
 }
 
 .services-list div:hover{
-    background: rgb(109, 10, 48);
+    background: var(--gradient-hover);
     transform: translateY(-10px);
 }
 
