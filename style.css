@@ -305,6 +305,8 @@ nav a i{
 }
 
 .fa-solid.fa-circle-half-stroke{
+    position: absolute;
+    right: 5%;
     visibility: visible;
     display: block;
     font-size: 25px;
@@ -999,7 +1001,11 @@ nav .fa-solid.fa-xmark{
     .header-text h1{
         font-size: 30px;
     }
-    nav .fa-solid{
+    .fa-solid.fa-circle-half-stroke{
+        right: 10%;
+    }
+    nav .fa-solid.fa-bars{
+        visibility: visible;
         display: block;
         font-size: 25px;
     }
@@ -1008,6 +1014,7 @@ nav .fa-solid.fa-xmark{
         width: 100%;
         margin: 0;
         padding: 20px 5%;
+        mask: none;
     }
 
     nav ul {
@@ -1017,9 +1024,9 @@ nav .fa-solid.fa-xmark{
         width: 200px;
         height: 100vh;
         padding-top: 50px;
-        background: rgba(80, 0, 49, 0.6);
+        background: var(--gradient);
         
-        border: 5px solid var(--theme_color);
+        border: var(--border-card);
         border-radius: 15px;
         z-index: 2;
     }
@@ -1028,6 +1035,7 @@ nav .fa-solid.fa-xmark{
         margin: 25px;
     }
     nav ul .fa-solid.fa-xmark{
+        visibility: visible;
         position: absolute;
         top: 35px;
         left: 25px;

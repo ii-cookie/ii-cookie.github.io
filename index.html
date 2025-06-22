@@ -295,6 +295,7 @@
 <script>
 
     var sidemenu = document.getElementById("sidemenu");
+    var togglesybol = document.getElementsByClassName("fa-circle-half-stroke");
 
     sidemenu.addEventListener("contextmenu", function(event) {
         event.preventDefault();
@@ -302,10 +303,12 @@
 
     function openmenu(){
         sidemenu.style.transform = "translateX(-200px)"
+        togglesybol.style.visibility = "hidden"
     }
 
     function closemenu(){
         sidemenu.style.transform = "translateX(200px)"
+        togglesybol.style.visibility = "visible"
     }
 </script>
 <script>
