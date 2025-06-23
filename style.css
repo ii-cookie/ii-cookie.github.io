@@ -33,6 +33,7 @@
 
     --hover-color: hsl(341, 100%, 50%);
     --theme_color: hsl(341, 100%, 50%);
+    --layer-text: white;
 
     --cursor-color: hsl(0,0%,100%);
     --cursor-color-change-1: hsl(336, 100%, 78%);
@@ -46,8 +47,8 @@
     --pfp-color-change-3: hsl(136, 84%, 84%);
     --pfp-color-change-4: hsl(37, 87%, 88%);
 
-    --project-layer-color-up: rgba(255,255,255,0.4);
-    --project-layer-color-down: var(--primary);
+    --project-layer-color-up: rgba(0,0,0,0.4);
+    --project-layer-color-down: var(--secondary);
 
     /* old color theme*/
     /* --bg_color: #45122b;
@@ -104,8 +105,11 @@ body.light{
     --title_color: var(--text);
     --subtitle_color: var(--text);
 
-    --project-layer-color-up: var(--primary) 40%;
-    --project-layer-color-down: var(--bg-dark);
+    --project-layer-color-up: rgba(255,255,255,0.4);
+    --project-layer-color-down: var(--secondary);
+    .layer{
+        color: white;
+    }
 
     transition: 0.5s;
 
@@ -783,7 +787,7 @@ nav ul li a:hover::after{
     text-align: center;
     font-size: 16px;
     transition: height 0.5s;
-    color: var(--text-muted);
+    color: var(--layer-text);
 }
 
 .layer h3{
@@ -794,15 +798,20 @@ nav ul li a:hover::after{
 
 .layer a{
     margin-top: 20px;
-    color: #ff004f;
+    color: var(--theme_color);
     text-decoration: none;
     font-size: 20px;
     line-height: 60px;
-    background: #fff;
+    background: white;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     text-align: center;
+    transition: 0.5s;
+    &:hover{
+        color: white;
+        background: var(--theme_color);
+    }
 }
 
 .work:hover img{
