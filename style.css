@@ -1004,7 +1004,7 @@ nav .fa-solid.fa-xmark{
         font-size: 30px;
     }
     .fa-solid.fa-circle-half-stroke{
-        right: 10%;
+        right: 15%;
     }
     nav .fa-solid.fa-bars{
         visibility: visible;
@@ -1037,9 +1037,11 @@ nav .fa-solid.fa-xmark{
         display: block;
         margin: 25px;
     }
-    nav ul .fa-solid.fa-xmark{
+    nav .fa-solid.fa-xmark{
         visibility: visible;
+        display: block;
         position: absolute;
+        font-size: 25px;
         top: 35px;
         left: 25px;
         /* cursor: pointer; */
