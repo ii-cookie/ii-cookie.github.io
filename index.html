@@ -31,6 +31,7 @@
 <canvas id="home"></canvas>
 <div id="header">
 <div id="scroll-progress"></div>
+<div id="counter-scroll-progress"></div>
         <nav>
             
             <!-- <img src="images/logo.png" alt="logo" height="90" width="240"> -->
@@ -337,6 +338,7 @@
 </script>
 <script>
     const scrollProgress = document.getElementById("scroll-progress");
+    const counterscrollProgress = document.getElementById("counter-scroll-progress");
 const height =
     document.documentElement.scrollHeight - document.documentElement.clientHeight;
 
@@ -344,6 +346,7 @@ const height =
         const scrollTop =
         document.body.scrollTop || document.documentElement.scrollTop;
         scrollProgress.style.width = `${(scrollTop / height) * 100}%`;
+        // counterscrollProgress.style.width = `${100 - (scrollTop / height) * 100}%`
     });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
