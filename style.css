@@ -387,7 +387,7 @@ nav ul li a:hover::after{
     margin-right: auto;
     color: var(--pfp-color);
     background: transparent;
-    margin-top: 100px;
+    margin-top: 0%;
     font-size: 200px;
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
@@ -989,11 +989,11 @@ nav .fa-solid.fa-xmark{
         /* background-image: url(images/background-phone.png); */
         flex-direction: columns;
         align-items: center;
-        overflow: hidden;
+        overflow: visible;
         background-attachment: fixed;
     }
     .header-text{
-        margin-top: 40%;
+        margin-top: 0%;
         font-size: 16px;
     }
     .pfp{
@@ -1017,6 +1017,7 @@ nav .fa-solid.fa-xmark{
         margin: 0;
         padding: 20px 5%;
         mask: none;
+        background: transparent;
     }
 
     nav ul {
