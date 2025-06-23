@@ -230,7 +230,7 @@ body{
     z-index: 10000;
     animation: bg-color-change 5s infinite;
 }
-#counter-scroll-progress{
+/* #counter-scroll-progress{
     position: fixed;
     top: 0;
     height: 4px;
@@ -238,7 +238,7 @@ body{
     z-index: 9999;
     animation: none;
     width: 100%;
-}
+} */
 /* failed blur, idk why ........nvm it works*/
 #scroll-progress::before{   
     content: '';
@@ -262,7 +262,7 @@ nav{
     justify-content: space-between;
     flex-wrap: wrap;
     position: fixed;
-    top: 4px;
+    top: 0;
     right: 0;
     left: 0;
     z-index: 999;
@@ -939,6 +939,18 @@ nav ul li a:hover::after{
 .btn.btn2:hover{
     transform: translateY(-5px);
     /* cursor: pointer; */
+}
+
+#contact-form{
+    filter: blur(2px);
+}
+
+.contact-right img{
+    position: absolute;
+    margin-top: 34%;
+    margin-left: 13%;
+    filter: none;
+    z-index: 5;
 }
 
 .contact-right form{
