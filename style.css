@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor:none !important;
+    cursor:none ;
 }
 
 :root{
@@ -306,7 +306,7 @@ nav a i{
 
 .fa-solid.fa-circle-half-stroke{
     position: absolute;
-    right: 5%;
+    right: 2px;
     visibility: visible;
     display: block;
     font-size: 25px;
@@ -316,13 +316,12 @@ nav a i{
 }
 .logo{
     width: 100px ;
-    
 
 }
 nav ul{
     transition: 0.5s;
     position: absolute;
-    right: 10%;
+    right: 5%;
 }
 nav ul li{
     align-self: center;
@@ -1075,6 +1074,16 @@ nav .fa-solid.fa-xmark{
     .copyright{
         font-size: 14px;
     }
+}
+
+@media only screen and (max-width: 400px){
+    *{
+        cursor: default;
+    }
+    .circle, .circle::before{
+        visibility: hidden;
+    }
+
 }
 
 #msg{
