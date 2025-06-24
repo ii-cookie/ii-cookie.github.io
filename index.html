@@ -28,6 +28,7 @@
 <script src="cursor.js"></script>
 
 <body>
+
 <canvas id="home"></canvas>
 <div id="header">
 <div id="scroll-progress"></div>
@@ -261,8 +262,8 @@
                 <a href="images/Resume_LEONG_Isaac_Nicholas.pdf" download class="btn btn2">Download Resume</a>
             </div>
             <div class="contact-right" >
-                <img src="images/loading.gif" alt="" class="loading" height="30px" width="30px">
-                <div id="contact-form">
+                
+                <div id="loading"><img src="images/loading.gif" alt="" class="loading" ></div>
                 <form name="submit-to-google-sheet">
                     <link rel="preconnect" href="https://fonts.googleapis.com">
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -273,13 +274,14 @@
                     <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
                     <button type="submit" class="btn btn2">Submit</button>
                 </form>
-            </div>
                 <span id="msg"></span>
+            
             </div>
         </div>
     </div>
     <div class="copyright">Copyright © iicookie Made with your mom <i class="fa-solid fa-heart"></i> by cookie</div>
  </div>
+ 
 <script>
     var tablinks = document.getElementsByClassName("tab-links");
     var tabcontents = document.getElementsByClassName("tab-contents");
@@ -326,18 +328,21 @@
     const scriptURL = 'https://script.google.com/macros/s/AKfycbz4xBJF6XgJwLeo30jvBse0ru9xW60BHIX06Az_kIPmen6tnGCM3zT6q_NCBGRj4x2N/exec'
     const form = document.forms['submit-to-google-sheet']
     const msg = document.getElementById("msg")
-    const section = document.getElementById("contact-form")
+    const loading = document.getElementById("loading")
     form.addEventListener('submit', e => {
-      section.classList.toggle("loading")
+      
       e.preventDefault()
+        loading.style.visibility = "visible"
       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
+            loading.style.visibility = "hidden"
             msg.innerHTML = "Message sent successfully"
             setTimeout(function(){
                 msg.innerHTML = "" 
             }, 5000)
             form.reset()
         })
+        loading.style.visibility = "hidden"
         .catch(error => console.error('Error!', error.message))
     })
 </script>

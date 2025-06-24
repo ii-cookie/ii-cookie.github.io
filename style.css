@@ -941,16 +941,33 @@ nav ul li a:hover::after{
     /* cursor: pointer; */
 }
 
-#contact-form{
-    filter: blur(2px);
+/* #loading{
+    position: absolute;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    z-index: 100000;
+} */
+
+#loading{
+    position:fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    backdrop-filter: blur(0.3rem);
+    visibility: hidden;
+    z-index: 998;
 }
 
 .contact-right img{
-    position: absolute;
-    margin-top: 34%;
-    margin-left: 13%;
+    position: fixed;
+    height: 30px;
+    width: 30px;
+    top: 50%;
+    left: 50%;
     filter: none;
-    z-index: 5;
+    z-index: 50000;
 }
 
 .contact-right form{
