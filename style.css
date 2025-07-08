@@ -621,14 +621,119 @@ nav ul li a:hover::after{
     display: block;
 
 }
-.chart {
-    /* display: flex; */
-    display: inline-block;
+
+.sub-title span{
+    color: var(--text-muted);
+
+}
+
+.sub-title{
+    padding-bottom: 30px;
+}
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container1{
+    flex-basis: 50%;
+    transition: all ease 0.5s;
+    padding-bottom: 30px;
+    /* width: 600px; */
+    height: 500px;
+    padding-left: 90px;
+    padding-right: 30px;
+    /* margin-left: 100px; */
+    overflow-y: scroll;
+    scrollbar-color: var(--bg-dark) var(--bg-light);
+}
+
+
+
+.heading{
+    font-size: 40px;
+    /* text-decoration: underline;
+    text-underline-offset: 15px; */
+    margin-bottom: 50px;
+}
+
+.bar{
+    font-size: 27px;
+}
+
+.Technical-bars .bar{
+    margin: 40px 0;
+}
+
+.Technical-bars .bar:first-child{
+    margin-top: 0;
+
+}
+.Technical-bars .bar:last-child{
+    margin-bottom: 0;
+
+}
+
+.Technical-bars .bar .info{
+    margin-bottom: 5px;
+}
+
+.Technical-bars .bar .info span{
+    font-size: 18px;
+    font-weight: 500;
+    animation: showText 0.5s 1s linear forwards;
+    opacity: 0;
+}
+
+.Technical-bars .bar .progress-line{
     position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 5px;
+    background-color: var(--highlight);
+    animation: animate-progress-line 1s cubic-bezier(1,0,0.5,1) forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+@keyframes animate-progress-line{
+    100%{
+        transform: scaleX(1);
+    }
+}
+
+.Technical-bars .bar .progress-line span{
+    height: 100%;
+    background-color: var(--primary);
+    position: absolute;
+    border-radius: 10px;
+    animation: animate-progress-line 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.progress-line.html span{
+    width: 90%;
+}
+
+.container2{
+    flex-basis: 40%;
+}
+
+.chart {
+    display: flex;
+    /* display: block; */
+    position: relative;
+    /* align-self: center; */
+
+    /* width: 100%;
+    height: 100%; */
     width: 450px;
     height: 450px;
-    top: 50%;
-    left: 50%;
+    /* margin: 20px;
+    top: 20%; */
+    /* left: 50%; */
     /* margin: -225px 0 0 -225px; */
   }
   .pieTip {
@@ -1112,6 +1217,12 @@ nav .fa-solid.fa-xmark{
     .tab-links{
         font-size: 16px;
         margin-right: 20px;
+    }
+    .container1{
+        flex-basis: 100%;
+    }
+    .container2{
+        flex-basis: 100%;
     }
     .chart{
         padding: 0 20%;
