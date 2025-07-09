@@ -637,11 +637,11 @@ section{
 }
 
 .container1{
-    flex-basis: 50%;
+    flex-basis: 60%;
     transition: all ease 0.5s;
     padding-bottom: 30px;
     /* width: 600px; */
-    height: 500px;
+    height: 450px;
     padding-left: 90px;
     padding-right: 30px;
     /* margin-left: 100px; */
