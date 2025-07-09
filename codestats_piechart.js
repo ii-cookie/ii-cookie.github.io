@@ -69,6 +69,57 @@ function getGooglePaletteColor(size, index){
   return '#' + dv[index].toString()
 }
 
+function parseHslString(hslString) {
+  if (!hslString || typeof hslString !== 'string') {
+    console.error('Invalid HSL string:', hslString);
+    return null;
+  }
+  const regex = /hsl\((\d+)\s*(\d+)%\s*(\d+)%\)/;
+  const match = hslString.match(regex);
+  if (match) {
+    return [parseInt(match[1]), parseInt(match[2]), parseInt(match[3])];
+  }
+  console.error('HSL string format invalid:', hslString);
+  return null;
+}
+
+function getPrimaryGradientColor(size, index) {
+  // Validate inputs
+  if (!Number.isInteger(size) || size <= 0) {
+    console.error('Invalid size:', size);
+    return 'hsl(0, 0%, 50%)'; // Fallback color
+  }
+  if (!Number.isInteger(index) || index < 0 || index >= size) {
+    console.error('Invalid index:', index);
+    return 'hsl(0, 0%, 50%)'; // Fallback color
+  }
+
+  // Check light mode (currently unused, but kept for potential future use)
+  const lightMode = document.body.classList.contains('light');
+
+  // Get CSS custom property
+  const style = window.getComputedStyle(document.body);
+  const primaryColor = style.getPropertyValue('--primary').trim();
+  
+  // Parse HSL string
+  const hslPrimary = parseHslString(primaryColor);
+  if (!hslPrimary) {
+    console.error('Failed to parse --primary color, using fallback');
+    return 'hsl(0, 0%, 50%)'; // Fallback color
+  }
+
+  // Calculate lightness
+  const maxLight = 80;
+  const minLight = 20;
+  const lightDiff = (maxLight - minLight) / size;
+  const lightness = Math.min(100, Math.max(0, minLight + lightDiff * index));
+
+  // Log for debugging
+  console.log(`hsl(${hslPrimary[0]}, ${hslPrimary[1]}%, ${lightness}%)`);
+
+  // Return HSL string
+  return `hsl(${hslPrimary[0]}, ${hslPrimary[1]}%, ${lightness}%)`;
+}
 
 function createDataArray(languages, xps){
     if(languages.length !== xps.length){
@@ -361,8 +412,9 @@ $(function(){
         console.log(sorted_dataArray)
         console.log(sorted_dataArray.title)
         
-        sorted_dataArray.map(function(e, index){
+        sorted_dataArray.map(function(e, index){  //CHANGE COLOR HERE 
           e.color = getGooglePaletteColor(sorted_dataArray.length, index)
+          e.color = getPrimaryGradientColor(sorted_dataArray.length, index)
         })
 
         $('#pieChart').drawPieChart(sorted_dataArray)
