@@ -266,11 +266,14 @@ nav{
     right: 0;
     left: 0;
     z-index: 999;
-    margin: 0 5%;
+    /* margin: 0 5%; */
+    padding: 0 5%;
+    padding-right: 5%;
     padding-top: 1%;
+    padding-bottom: 50px;
     /* backdrop-filter:url(#displacementFilter4); */
-    mask: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,1), rgba(0,0,0,0)) ;
-    backdrop-filter: blur(5px);
+    mask: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,1),  rgba(0,0,0,0)) ;
+    backdrop-filter: blur(50px);
 }
 
 
@@ -291,7 +294,7 @@ nav a{
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: pfp-color-change 1.4s infinite;
-    
+
 }
 
 @keyframes color-change{
@@ -320,7 +323,7 @@ nav a i{
 
 .fa-solid.fa-circle-half-stroke{
     position: absolute;
-    right: 2px;
+    right: 5%;
     visibility: visible;
     display: block;
     font-size: 25px;
@@ -391,6 +394,10 @@ nav ul li a::after{
 nav ul li a:hover::after{
     background-color: var(--hover-color);
     /* width: 100%; */
+}
+
+#sidemenu{
+    right: 8%;
 }
 
 .header-text{
