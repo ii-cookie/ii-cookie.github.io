@@ -154,6 +154,11 @@ html{
     scroll-behavior: smooth;
 }
 
+a{
+    color: var(--info);
+    text-decoration: none;
+}
+
 .circle, .circle::before{
     --circle-size: 40px;
     position: fixed;
@@ -857,14 +862,14 @@ section{
 
 .services-list div a{
     text-decoration: none;
-    color: #858cd9;
+    color: var(--info);
     font-size: 16px;
     margin-top: 20px;
     display: inline-block;
 }
 
 .services-list div a i{
-    color: #858cd9;
+    color: var(--info);
     font-size: 16px;
 }
 

@@ -109,10 +109,14 @@ function getPrimaryGradientColor(size, index) {
   }
 
   // Calculate lightness
-  const maxLight = 80;
+  const maxLight = 85;
   const minLight = 20;
   const lightDiff = (maxLight - minLight) / size;
-  const lightness = Math.min(100, Math.max(0, minLight + lightDiff * index));
+  let lightness = Math.min(100, Math.max(0, minLight + lightDiff * index));
+
+  if (lightMode){
+    lightness = Math.max(0, Math.min(100, maxLight - lightDiff * index));
+  }
 
   // Log for debugging
   console.log(`hsl(${hslPrimary[0]}, ${hslPrimary[1]}%, ${lightness}%)`);
@@ -424,3 +428,30 @@ $(function(){
         $('#pieChart').drawPieChart([])
     })
 })
+
+function pie_theme_toggle(){
+  let old = document.getElementById('pieChart')
+  old.innerHTML = ""
+  $(function(){
+    fetchData().then(result => {
+        const lang = result.languages;
+        const xp = result.xps;
+        const dataArray = createDataArray(lang,xp);
+        //might as well sort it
+        const sorted_dataArray = dataArray.sort((a,b) => b.value - a.value)
+        console.log(sorted_dataArray)
+        console.log(sorted_dataArray.title)
+        
+        sorted_dataArray.map(function(e, index){  //CHANGE COLOR HERE 
+          e.color = getGooglePaletteColor(sorted_dataArray.length, index)
+          e.color = getPrimaryGradientColor(sorted_dataArray.length, index)
+        })
+
+        $('#pieChart').drawPieChart(sorted_dataArray)
+
+    }).catch(error => {
+        console.error('cant draw it bro cuz:', error);
+        $('#pieChart').drawPieChart([])
+    })
+})
+}
