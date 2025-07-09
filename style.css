@@ -649,7 +649,7 @@ section{
     padding-bottom: 30px;
     /* width: 600px; */
     height: 450px;
-    padding-left: 90px;
+    padding-left: 5%;
     padding-right: 30px;
     /* margin-left: 100px; */
     overflow-y: scroll;
@@ -729,11 +729,11 @@ section{
 }
 
 .container2{
-    flex-basis: 40%;
+    flex-basis: 30%;
 }
 
 .chart {
-    display: flex;
+    /* display: flex; */
     /* display: block; */
     position: relative;
     /* align-self: center; */
