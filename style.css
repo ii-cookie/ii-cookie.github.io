@@ -679,6 +679,10 @@ section{
     margin-bottom: 5px;
 }
 
+.Technical-bars .bar .info .bxl{
+    transform: translateY(5px);
+}
+
 .Technical-bars .bar .info span{
     font-size: 18px;
     font-weight: 500;
