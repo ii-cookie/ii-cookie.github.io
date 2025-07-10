@@ -277,7 +277,7 @@ nav{
     padding-top: 1%;
     padding-bottom: 50px;
     /* backdrop-filter:url(#displacementFilter4); */
-    mask: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,1),  rgba(0,0,0,0)) ;
+    mask: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,.9),  rgba(0,0,0,0)) ;
     backdrop-filter: blur(50px);
 }
 
