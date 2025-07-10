@@ -1172,6 +1172,7 @@ nav .fa-solid.fa-xmark{
         font-size: 30px;
     }
     .fa-solid.fa-circle-half-stroke{
+        visibility: visible;
         right: 15%;
     }
     nav .fa-solid.fa-bars{
@@ -1188,7 +1189,7 @@ nav .fa-solid.fa-xmark{
         background: transparent;
     }
     #sidemenu{
-        right: 0;
+        right: -200px;
     }
     nav ul {
         right: 0%;
@@ -1246,8 +1247,18 @@ nav .fa-solid.fa-xmark{
         padding: 0;
     }
 
+    .Technical-bars{
+        padding-right: 5%;
+    }
+
     .chart{
+        display: block;
+        transform-origin: 225px 225px;
+        padding: auto;
+        align-self: center;
+        
         transform: scale(0.8);
+        
     }
     .contact-left, .contact-right{
         flex-basis: 100%;
