@@ -1187,8 +1187,11 @@ nav .fa-solid.fa-xmark{
         mask: none;
         background: transparent;
     }
-
+    #sidemenu{
+        right: 0;
+    }
     nav ul {
+        right: 0%;
         position: fixed;
         top: 0;
         right: -200px;
@@ -1236,12 +1239,15 @@ nav .fa-solid.fa-xmark{
     }
     .container1{
         flex-basis: 100%;
+        padding: 0;
     }
     .container2{
         flex-basis: 100%;
+        padding: 0;
     }
+
     .chart{
-        padding: 0 20%;
+        transform: scale(0.8);
     }
     .contact-left, .contact-right{
         flex-basis: 100%;
