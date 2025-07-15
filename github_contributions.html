@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" /><meta content="IE=edge" http-equiv="X-UA-Compatible" /><meta content="width=device-width, initial-scale=1" name="viewport" /><title>JavaScript Calendar Chart | Final-Alternative</title><link href="https://playground.anychart.com/8RQr8fEy/iframe" rel="canonical" /><meta content="AJAX Chart,Chart from JSON,JSON Chart,JSON Plot,Tooltip" name="keywords" /><meta content="AnyChart - JavaScript Charts designed to be embedded and integrated" name="description" /><!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]--><style>html, body, #container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}</style></head><body><div id="container"></div><script src="https://cdn.anychart.com/releases/latest/js/anychart-core.min.js"></script><script src="https://cdn.anychart.com/releases/latest/js/anychart-calendar.min.js"></script><script src="https://cdn.anychart.com/releases/latest/js/anychart-data-adapter.min.js"></script><script type="text/javascript">anychart.onDocumentReady(function() {
+
+  // load the json file
+  anychart.data.loadJsonFile(
+    'https://gist.githubusercontent.com/shacheeswadia/56f3867eb6f8fcc4532e7ac458c8d9f7/raw/702f30b457cc1b573093c6977a69958fb741ede6/calendarData.json',
+
+    // create a function with the data parameter
+    function(data) {
+      
+      // define a dataset variable to store the data
+      var dataset = anychart.data.set(data);
+
+      // map the data
+      var mapping = dataset.mapAs({
+        x: 'date',
+        value: 'level'
+      });
+
+      // pass the mapped data to the calendar function
+      var chart = anychart.calendar(mapping);
+      
+      // specify the color of the background
+      chart.background('#0d1117');
+
+      // configure a custom color scale
+      var customColorScale = anychart.scales.ordinalColor();
+      customColorScale.ranges([
+        {equal: 1, color: '#400554'},
+        {equal: 2, color: '#693699'},
+        {equal: 3, color: '#7c40a9'},
+        {equal: 4, color: '#9570dd'}
+      ]);
+
+      // set the custom color scale
+      chart.colorScale(customColorScale);
+      
+      // hide the color legend
+      chart.colorRange(false);
+      
+      // remove the stroke
+      chart.months()
+        .stroke(false)
+        .noDataStroke(false);
+
+      // set the spacing and other options
+      chart.days()
+        .spacing(4)
+        .stroke(false)
+        .noDataStroke(false)
+        .noDataFill('#161b22')
+        .noDataHatchFill(false);
+      
+      // set the height of the chart
+      chart.listen('chartDraw', function() {
+        document.getElementById('container').style.height = chart.getActualHeight() + 'px';
+      });
+      
+      // set and customize the chart title
+      var title = chart.title();
+      title.enabled(true);
+      title
+        .text("GitHub Contributions of ii-cookie in 2017–2021 (dummy data)")
+        .fontSize(22)
+        .fontWeight(500)
+        .fontColor("#dfdfdf")
+        .padding(10);
+
+      // configure the chart tooltip
+      chart.tooltip()
+        .format('{%contributionCount} contributions');
+      
+      // configure the inverted order of years
+      chart.years().inverted(true);
+      
+      // set the container reference
+      chart.container('container');
+      
+      // draw the resulting chart
+      chart.draw();
+      
+    }
+    
+  );
+  
+});</script></body></html>
