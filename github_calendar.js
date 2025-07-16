@@ -1,29 +1,35 @@
 //https://www.reddit.com/r/github/comments/srmr5h/recreating_githubs_contributions_calendar_in_a_js/
 
+function getDayOfWeek(date) {
+  const dayOfWeek = new Date(date).getDay();    
+  return isNaN(dayOfWeek) ? null : dayOfWeek;
+}
 
 async function fetchData() {
     try {
-        let language_list = [];
-        let xp_list = [];
+        let contribution_list = [];
 
         const response = await fetch('https://github-contributions-api.jogruber.de/v4/ii-cookie');
         if (!response.ok) {
             console.log('Problem fetching data');
-            return { languages: [], xps: [] }; // return empty arrays on error
+            return []; // return empty 
         }
-
         const data = await response.json();
-        const languages = data.languages;
+        const contibution_data_list = data.contributions;
 
-        for (const language in languages) {
-            language_list.push(language); 
-            xp_list.push(languages[language].xps); 
+        for (const contribution_data in contibution_data_list) {
+            contribution = {}
+            contribution["count"] = contribution_data["count"]
+            contribution["day"] = contribution_data["date"]
+            contribution["weekday"] = getDayOfWeek(contribution_data["date"])
+            contribution["level"] = contribution_data["level"]
+            contribution_list.push(contribution)
         }
 
-        return { languages: language_list, xps: xp_list }; // return as array
+        return contribution_list; // return as array
     } catch (error) {
         console.error('Error:', error);
-        return { languages: [], xps: [] }; // returning empty when error
+        return []; // returning empty when error
     }
 }
 
@@ -31,9 +37,9 @@ async function fetchData() {
 anychart.onDocumentReady(function() {
 
     // load the json file
+    
     anychart.data.loadJsonFile(
       'https://gist.githubusercontent.com/shacheeswadia/56f3867eb6f8fcc4532e7ac458c8d9f7/raw/702f30b457cc1b573093c6977a69958fb741ede6/calendarData.json',
-  
       // create a function with the data parameter
       function(data) {
         

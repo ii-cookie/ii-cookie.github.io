@@ -7,87 +7,210 @@
   width: 100%;
   margin: 0;
   padding: 0;
-}</style></head><body><div id="container"></div><script src="https://cdn.anychart.com/releases/latest/js/anychart-core.min.js"></script><script src="https://cdn.anychart.com/releases/latest/js/anychart-calendar.min.js"></script><script src="https://cdn.anychart.com/releases/latest/js/anychart-data-adapter.min.js"></script><script type="text/javascript">anychart.onDocumentReady(function() {
+}</style></head><body><div id="container"></div><script src="https://cdn.anychart.com/releases/latest/js/anychart-core.min.js"></script><script src="https://cdn.anychart.com/releases/latest/js/anychart-calendar.min.js"></script><script src="https://cdn.anychart.com/releases/latest/js/anychart-data-adapter.min.js"></script><script type="text/javascript">
 
+
+function getDayOfWeek(date) {
+  const dayOfWeek = new Date(date).getDay();    
+  return isNaN(dayOfWeek) ? null : dayOfWeek;
+}
+
+async function fetchData() {
+    try {
+        let contribution_list = [];
+
+        const response = await fetch('https://github-contributions-api.jogruber.de/v4/ii-cookie');
+        if (!response.ok) {
+            console.log('Problem fetching data');
+            return []; // return empty 
+        }
+        const data = await response.json();
+        const contibution_data_list = data.contributions;
+
+        for (const contribution_data of contibution_data_list) {
+            const contribution = {
+              contributionCount: contribution_data["count"],
+              date: contribution_data["date"],
+              weekday: getDayOfWeek(contribution_data["date"]),
+              level: contribution_data["level"]
+            }
+            contribution_list.push(contribution)
+        }
+        console.log("my data")
+        console.log(contribution_list[0])
+        return contribution_list; // return as array
+    } catch (error) {
+        console.error('Error:', error);
+        return []; // returning empty when error
+    }
+}
+
+// async function fetchRawData(){
+//   const response = await fetch('https://github-contributions-api.jogruber.de/v4/ii-cookie');
+//   const data = await response.json();
+//   const contibution_data_list = data.contributions;
+//   return contribution_data_list
+// }
+
+async function createChart(){
+  const data = await fetchData()
+
+  console.log(data[12])
+  // define a dataset variable to store the data
+  var dataset = anychart.data.set(data);
+
+  // map the data
+  var mapping = dataset.mapAs({
+    x: 'date',
+    value: 'level'
+  });
+
+  // pass the mapped data to the calendar function
+  var chart = anychart.calendar(mapping);
+  
+  // specify the color of the background
+  chart.background('#0d1117');
+
+  // configure a custom color scale
+  var customColorScale = anychart.scales.ordinalColor();
+  customColorScale.ranges([
+    {equal: 1, color: '#400554'},
+    {equal: 2, color: '#693699'},
+    {equal: 3, color: '#7c40a9'},
+    {equal: 4, color: '#9570dd'}
+  ]);
+
+  // set the custom color scale
+  chart.colorScale(customColorScale);
+  
+  // hide the color legend
+  chart.colorRange(false);
+  
+  // remove the stroke
+  chart.months()
+    .stroke(false)
+    .noDataStroke(false);
+
+  // set the spacing and other options
+  chart.days()
+    .spacing(4)
+    .stroke(false)
+    .noDataStroke(false)
+    .noDataFill('#161b22')
+    .noDataHatchFill(false);
+  
+  // set the height of the chart
+  chart.listen('chartDraw', function() {
+    document.getElementById('container').style.height = chart.getActualHeight() + 'px';
+  });
+  
+  // set and customize the chart title
+  var title = chart.title();
+  title.enabled(true);
+  title
+    .text("GitHub Contributions of ii-cookie in 2017–2021 (dummy data)")
+    .fontSize(22)
+    .fontWeight(500)
+    .fontColor("#dfdfdf")
+    .padding(10);
+
+  // configure the chart tooltip
+  chart.tooltip()
+    .format('{%contributionCount} contributions');
+  
+  // configure the inverted order of years
+  chart.years().inverted(true);
+  
+  // set the container reference
+  chart.container('container');
+  
+  // draw the resulting chart
+  chart.draw();
+    
+}
+
+anychart.onDocumentReady(function() {
   // load the json file
   anychart.data.loadJsonFile(
     'https://gist.githubusercontent.com/shacheeswadia/56f3867eb6f8fcc4532e7ac458c8d9f7/raw/702f30b457cc1b573093c6977a69958fb741ede6/calendarData.json',
+  createChart()
 
-    // create a function with the data parameter
-    function(data) {
-      
-      // define a dataset variable to store the data
-      var dataset = anychart.data.set(data);
+  //   // create a function with the data parameter
+  //   function(data) {
+  //     console.log("their data")
+  //     console.log(data[0])
+  //     // define a dataset variable to store the data
+  //     var dataset = anychart.data.set(data);
 
-      // map the data
-      var mapping = dataset.mapAs({
-        x: 'date',
-        value: 'level'
-      });
+  //     // map the data
+  //     var mapping = dataset.mapAs({
+  //       x: 'date',
+  //       value: 'level'
+  //     });
 
-      // pass the mapped data to the calendar function
-      var chart = anychart.calendar(mapping);
+  //     // pass the mapped data to the calendar function
+  //     var chart = anychart.calendar(mapping);
       
-      // specify the color of the background
-      chart.background('#0d1117');
+  //     // specify the color of the background
+  //     chart.background('#0d1117');
 
-      // configure a custom color scale
-      var customColorScale = anychart.scales.ordinalColor();
-      customColorScale.ranges([
-        {equal: 1, color: '#400554'},
-        {equal: 2, color: '#693699'},
-        {equal: 3, color: '#7c40a9'},
-        {equal: 4, color: '#9570dd'}
-      ]);
+  //     // configure a custom color scale
+  //     var customColorScale = anychart.scales.ordinalColor();
+  //     customColorScale.ranges([
+  //       {equal: 1, color: '#400554'},
+  //       {equal: 2, color: '#693699'},
+  //       {equal: 3, color: '#7c40a9'},
+  //       {equal: 4, color: '#9570dd'}
+  //     ]);
 
-      // set the custom color scale
-      chart.colorScale(customColorScale);
+  //     // set the custom color scale
+  //     chart.colorScale(customColorScale);
       
-      // hide the color legend
-      chart.colorRange(false);
+  //     // hide the color legend
+  //     chart.colorRange(false);
       
-      // remove the stroke
-      chart.months()
-        .stroke(false)
-        .noDataStroke(false);
+  //     // remove the stroke
+  //     chart.months()
+  //       .stroke(false)
+  //       .noDataStroke(false);
 
-      // set the spacing and other options
-      chart.days()
-        .spacing(4)
-        .stroke(false)
-        .noDataStroke(false)
-        .noDataFill('#161b22')
-        .noDataHatchFill(false);
+  //     // set the spacing and other options
+  //     chart.days()
+  //       .spacing(4)
+  //       .stroke(false)
+  //       .noDataStroke(false)
+  //       .noDataFill('#161b22')
+  //       .noDataHatchFill(false);
       
-      // set the height of the chart
-      chart.listen('chartDraw', function() {
-        document.getElementById('container').style.height = chart.getActualHeight() + 'px';
-      });
+  //     // set the height of the chart
+  //     chart.listen('chartDraw', function() {
+  //       document.getElementById('container').style.height = chart.getActualHeight() + 'px';
+  //     });
       
-      // set and customize the chart title
-      var title = chart.title();
-      title.enabled(true);
-      title
-        .text("GitHub Contributions of ii-cookie in 2017–2021 (dummy data)")
-        .fontSize(22)
-        .fontWeight(500)
-        .fontColor("#dfdfdf")
-        .padding(10);
+  //     // set and customize the chart title
+  //     var title = chart.title();
+  //     title.enabled(true);
+  //     title
+  //       .text("GitHub Contributions of ii-cookie in 2017–2021 (dummy data)")
+  //       .fontSize(22)
+  //       .fontWeight(500)
+  //       .fontColor("#dfdfdf")
+  //       .padding(10);
 
-      // configure the chart tooltip
-      chart.tooltip()
-        .format('{%contributionCount} contributions');
+  //     // configure the chart tooltip
+  //     chart.tooltip()
+  //       .format('{%contributionCount} contributions');
       
-      // configure the inverted order of years
-      chart.years().inverted(true);
+  //     // configure the inverted order of years
+  //     chart.years().inverted(true);
       
-      // set the container reference
-      chart.container('container');
+  //     // set the container reference
+  //     chart.container('container');
       
-      // draw the resulting chart
-      chart.draw();
+  //     // draw the resulting chart
+  //     chart.draw();
       
-    }
+  //   }
     
   );
   
