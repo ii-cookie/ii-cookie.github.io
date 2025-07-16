@@ -1,4 +1,4 @@
-async function fetchData() {
+async function fetchCodeData() {
     try {
         let language_list = [];
         let xp_list = [];
@@ -49,7 +49,7 @@ function createDataArray(languages, xps){
 }
 
 
-// fetchData().then(result => {
+// fetchCodeData().then(result => {
 //     const lang = result.languages; // Extract language names
 //     const xp = result.xps; // Extract XP values
 //     console.log('Languages:', lang); // Array of language names
@@ -58,7 +58,7 @@ function createDataArray(languages, xps){
 //     console.error('Failed to fetch data:', error);
 // });
 
-fetchData().then(result => {
+fetchCodeData().then(result => {
     const lang = result.languages
     const xp = result.xps
     const dataArray = createDataArray(lang, xp)

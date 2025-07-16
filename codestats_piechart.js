@@ -1,19 +1,19 @@
 //taken from https://codepen.io/githiro/pen/AgZGEV
 
 //copied from codestats.js
-async function fetchData() {
+async function fetchstat() {
     try {
         let language_list = [];
         let xp_list = [];
 
         const response = await fetch('https://codestats.net/api/users/iicookie');
         if (!response.ok) {
-            console.log('Problem fetching data');
+            console.log('Problem fetching stat');
             return { languages: [], xps: [] }; // return empty arrays on error
         }
 
-        const data = await response.json();
-        const languages = data.languages;
+        const stat = await response.json();
+        const languages = stat.languages;
 
         for (const language in languages) {
             language_list.push(language); 
@@ -125,7 +125,7 @@ function getPrimaryGradientColor(size, index) {
   return `hsl(${hslPrimary[0]}, ${hslPrimary[1]}%, ${lightness}%)`;
 }
 
-function createDataArray(languages, xps){
+function createstatArray(languages, xps){
     if(languages.length !== xps.length){
         console.error('xp and language not the same array length')
         return []
@@ -141,22 +141,22 @@ function createDataArray(languages, xps){
 }
 
 
-// fetchData().then(result => {
+// fetchstat().then(result => {
 //     const lang = result.languages; // Extract language names
 //     const xp = result.xps; // Extract XP values
 //     console.log('Languages:', lang); // Array of language names
 //     console.log('XP:', xp); // Array of XP numbers
 // }).catch(error => {
-//     console.error('Failed to fetch data:', error);
+//     console.error('Failed to fetch stat:', error);
 // });
 
-// fetchData().then(result => {
+// fetchstat().then(result => {
 //     const lang = result.languages
 //     const xp = result.xps
-//     const dataArray = createDataArray(lang, xp)
-//     console.log('Data Array:', dataArray)
+//     const statArray = createstatArray(lang, xp)
+//     console.log('stat Array:', statArray)
 // }).catch(error => {
-//     console.error('failed to get dataArray:', error)
+//     console.error('failed to get statArray:', error)
 // })
 
 // $(function(){
@@ -181,7 +181,7 @@ function createDataArray(languages, xps){
    * Released under the MIT license.
    */
   (function($, undefined) {
-    $.fn.drawPieChart = function(data, options) {
+    $.fn.drawPieChart = function(stat, options) {
       var $this = this,
         W = $this.width(),
         H = $this.height(),
@@ -210,9 +210,9 @@ function createDataArray(languages, xps){
           tipClass: "pieTip",
           beforeDraw: function(){  },
           afterDrawed : function(){  },
-          onPieMouseenter : function(e,data){  },
-          onPieMouseleave : function(e,data){  },
-          onPieClick : function(e,data){  }
+          onPieMouseenter : function(e,stat){  },
+          onPieMouseleave : function(e,stat){  },
+          onPieClick : function(e,stat){  }
         }, options),
         animationOptions = {
           linear : function (t){
@@ -262,10 +262,10 @@ function createDataArray(languages, xps){
         tipW = $tip.width(),
         tipH = $tip.height();
   
-      for (var i = 0, len = data.length; i < len; i++){
-        segmentTotal += data[i].value;
+      for (var i = 0, len = stat.length; i < len; i++){
+        segmentTotal += stat[i].value;
         var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        g.setAttribute("data-order", i);
+        g.setAttribute("stat-order", i);
         g.setAttribute("class", settings.pieSegmentGroupClass);
         $groups[i] = $(g).appendTo($pathGroup);
         $groups[i]
@@ -278,7 +278,7 @@ function createDataArray(languages, xps){
         p.setAttribute("stroke-width", settings.segmentStrokeWidth);
         p.setAttribute("stroke", settings.segmentStrokeColor);
         p.setAttribute("stroke-miterlimit", 2);
-        p.setAttribute("fill", data[i].color);
+        p.setAttribute("fill", stat[i].color);
         p.setAttribute("class", settings.pieSegmentClass);
         $pies[i] = $(p).appendTo($groups[i]);
   
@@ -286,7 +286,7 @@ function createDataArray(languages, xps){
         lp.setAttribute("stroke-width", settings.segmentStrokeWidth);
         lp.setAttribute("stroke", settings.segmentStrokeColor);
         lp.setAttribute("stroke-miterlimit", 2);
-        lp.setAttribute("fill", data[i].color);
+        lp.setAttribute("fill", stat[i].color);
         lp.setAttribute("opacity", settings.lightPiesOpacity);
         lp.setAttribute("class", settings.lightPieClass);
         $lightPies[i] = $(lp).appendTo($groups[i]);
@@ -297,20 +297,20 @@ function createDataArray(languages, xps){
       triggerAnimation();
   
       function pathMouseEnter(e){
-        var index = $(this).data().order;
-        $tip.text(data[index].title + ": " + data[index].value).fadeIn(200);
-        if ($groups[index][0].getAttribute("data-active") !== "active"){
+        var index = $(this).stat().order;
+        $tip.text(stat[index].title + ": " + stat[index].value).fadeIn(200);
+        if ($groups[index][0].getAttribute("stat-active") !== "active"){
           $lightPies[index].animate({opacity: .8}, 180);
         }
-        settings.onPieMouseenter.apply($(this),[e,data]);
+        settings.onPieMouseenter.apply($(this),[e,stat]);
       }
       function pathMouseLeave(e){
-        var index = $(this).data().order;
+        var index = $(this).stat().order;
         $tip.hide();
-        if ($groups[index][0].getAttribute("data-active") !== "active"){
+        if ($groups[index][0].getAttribute("stat-active") !== "active"){
           $lightPies[index].animate({opacity: settings.lightPiesOpacity}, 100);
         }
-        settings.onPieMouseleave.apply($(this),[e,data]);
+        settings.onPieMouseleave.apply($(this),[e,stat]);
       }
       function pathMouseMove(e){
         $tip.css({
@@ -319,21 +319,21 @@ function createDataArray(languages, xps){
         });
       }
       function pathClick(e){
-        var index = $(this).data().order;
+        var index = $(this).stat().order;
         var targetGroup = $groups[index][0];
-        for (var i = 0, len = data.length; i < len; i++){
+        for (var i = 0, len = stat.length; i < len; i++){
           if (i === index) continue;
-          $groups[i][0].setAttribute("data-active","");
+          $groups[i][0].setAttribute("stat-active","");
           $lightPies[i].css({opacity: settings.lightPiesOpacity});
         }
-        if (targetGroup.getAttribute("data-active") === "active"){
-          targetGroup.setAttribute("data-active","");
+        if (targetGroup.getAttribute("stat-active") === "active"){
+          targetGroup.setAttribute("stat-active","");
           $lightPies[index].css({opacity: .8});
         } else {
-          targetGroup.setAttribute("data-active","active");
+          targetGroup.setAttribute("stat-active","active");
           $lightPies[index].css({opacity: 1});
         }
-        settings.onPieClick.apply($(this),[e,data]);
+        settings.onPieClick.apply($(this),[e,stat]);
       }
       function drawPieSegments (animationDecimal){
         var startRadius = -PI/2,//-90 degree
@@ -345,8 +345,8 @@ function createDataArray(languages, xps){
         $pathGroup[0].setAttribute("opacity",animationDecimal);
   
         //draw each path
-        for (var i = 0, len = data.length; i < len; i++){
-          var segmentAngle = rotateAnimation * ((data[i].value/segmentTotal) * (PI*2)),//start radian
+        for (var i = 0, len = stat.length; i < len; i++){
+          var segmentAngle = rotateAnimation * ((stat[i].value/segmentTotal) * (PI*2)),//start radian
               endRadius = startRadius + segmentAngle,
               largeArc = ((endRadius - startRadius) % (PI * 2)) > PI ? 1 : 0,
               startX = centerX + cos(startRadius) * pieRadius,
@@ -407,21 +407,21 @@ function createDataArray(languages, xps){
 
 
 $(function(){
-    fetchData().then(result => {
+    fetchstat().then(result => {
         const lang = result.languages;
         const xp = result.xps;
-        const dataArray = createDataArray(lang,xp);
+        const statArray = createstatArray(lang,xp);
         //might as well sort it
-        const sorted_dataArray = dataArray.sort((a,b) => b.value - a.value)
-        console.log(sorted_dataArray)
-        console.log(sorted_dataArray.title)
+        const sorted_statArray = statArray.sort((a,b) => b.value - a.value)
+        console.log(sorted_statArray)
+        console.log(sorted_statArray.title)
         
-        sorted_dataArray.map(function(e, index){  //CHANGE COLOR HERE 
-          e.color = getGooglePaletteColor(sorted_dataArray.length, index)
-          e.color = getPrimaryGradientColor(sorted_dataArray.length, index)
+        sorted_statArray.map(function(e, index){  //CHANGE COLOR HERE 
+          e.color = getGooglePaletteColor(sorted_statArray.length, index)
+          e.color = getPrimaryGradientColor(sorted_statArray.length, index)
         })
 
-        $('#pieChart').drawPieChart(sorted_dataArray)
+        $('#pieChart').drawPieChart(sorted_statArray)
 
     }).catch(error => {
         console.error('cant draw it bro cuz:', error);
@@ -433,21 +433,21 @@ function pie_theme_toggle(){
   let old = document.getElementById('pieChart')
   old.innerHTML = ""
   $(function(){
-    fetchData().then(result => {
+    fetchstat().then(result => {
         const lang = result.languages;
         const xp = result.xps;
-        const dataArray = createDataArray(lang,xp);
+        const statArray = createstatArray(lang,xp);
         //might as well sort it
-        const sorted_dataArray = dataArray.sort((a,b) => b.value - a.value)
-        console.log(sorted_dataArray)
-        console.log(sorted_dataArray.title)
+        const sorted_statArray = statArray.sort((a,b) => b.value - a.value)
+        console.log(sorted_statArray)
+        console.log(sorted_statArray.title)
         
-        sorted_dataArray.map(function(e, index){  //CHANGE COLOR HERE 
-          e.color = getGooglePaletteColor(sorted_dataArray.length, index)
-          e.color = getPrimaryGradientColor(sorted_dataArray.length, index)
+        sorted_statArray.map(function(e, index){  //CHANGE COLOR HERE 
+          e.color = getGooglePaletteColor(sorted_statArray.length, index)
+          e.color = getPrimaryGradientColor(sorted_statArray.length, index)
         })
 
-        $('#pieChart').drawPieChart(sorted_dataArray)
+        $('#pieChart').drawPieChart(sorted_statArray)
 
     }).catch(error => {
         console.error('cant draw it bro cuz:', error);

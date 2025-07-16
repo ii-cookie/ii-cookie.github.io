@@ -68,6 +68,8 @@
     --highlight-color: #97bae2;
     --highlight-color-text: #ff0055;
 }
+
+
 body.light{
     /* light mode */
     --bg-dark: hsl(322 88% 92%);
@@ -110,6 +112,7 @@ body.light{
     .layer{
         color: white;
     }
+
 
     transition: 0.5s;
 
@@ -636,7 +639,7 @@ nav ul li a:hover::after{
 
 .sub-title span{
     color: var(--text-muted);
-
+    font-size: smaller;
 }
 
 .sub-title{
@@ -787,6 +790,10 @@ section{
         border-top: 6px solid rgba(255,255,255,.95);
         line-height: 0;
   }
+
+#github_contribute_calendar{
+    background: transparent;
+}
 .logos{
     margin-top: 30px;
     margin-left: 5%;

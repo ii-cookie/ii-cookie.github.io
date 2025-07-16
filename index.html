@@ -54,7 +54,7 @@
             </ul>
             
                 
-            <i class="fa-solid fa-circle-half-stroke" onclick="theme_toggle(); pie_theme_toggle(); progress_line_theme_toggle()"></i>
+            <i class="fa-solid fa-circle-half-stroke" onclick="theme_toggle(); pie_theme_toggle(); progress_line_theme_toggle(); github_calendar_theme_toggle()"></i>
             <!-- <button onclick="theme_toggle()">TOGGLLE</button> -->
             
             <i class="fa-solid fa-bars" onclick="openmenu()"></i>
@@ -128,8 +128,11 @@
     </div>
     <div class="container">
         <div class="statistics">
-            <h1 class="sub-title">statistics</h1>
-
+            <h1 class="sub-title">
+                statistics
+                <span><br>coding</span>
+            </h1>
+            
             <section>
                 <div class="container2">
                     <div id="pieChart" class="chart"></div>
@@ -151,7 +154,9 @@
 
             </section>
             <a href="https://codestats.net/users/iicookie">Here is where the data come from <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            <a href="github_contributions.html"><br>github contributions (wip)</a>
+
+            <h1 class="sub-title"><span>contributions</span></h1>
+            <div id="github_contribute_calendar"></div>
         </div>
     </div>
     
@@ -382,13 +387,17 @@ const height =
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.1/palette.js"></script>
 <script src="codestats_piechart.js"></script>
-<script src="codestats_progress-line.js"></script>
+
 <script>
     function theme_toggle(){
         document.body.classList.toggle("light");
+        // document.body.style.scrollbarFaceColor = "var(--bg-light)";
+        // document.body.style.scrollbarTrackColor = "var(--bg-dark)";
     }
 </script>
-<!-- <script src="github_calendar.js"></script> -->
+<script src="codestats_progress-line.js"></script>
+<script src="https://cdn.anychart.com/releases/latest/js/anychart-core.min.js"></script><script src="https://cdn.anychart.com/releases/latest/js/anychart-calendar.min.js"></script><script src="https://cdn.anychart.com/releases/latest/js/anychart-data-adapter.min.js"></script>
+<script type="text/javascript" src="github_calendar.js"></script>
 
 </body>
 </html>
