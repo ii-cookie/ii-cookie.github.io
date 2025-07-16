@@ -116,7 +116,7 @@ body.light{
 
     transition: 0.5s;
 
-    
+    background-blend-mode:color-burn;
     nav ul li{
         align-self: center;
         border-radius: 15px;
@@ -215,7 +215,7 @@ body{
     background-image: url(images/114321306_p0.jpg);
     background-size: cover;
     background-attachment: fixed;
-    background-blend-mode: color-dodge;
+    background-blend-mode:color-dodge;
 }
 
 /* body a{
