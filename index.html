@@ -71,7 +71,7 @@
                 <!-- <script src="tilt_effect.js"></script> -->
                 <img id="pfp_image" src="images\discord_pfp.png" alt="discord pfp">
             </div>
-            <h1>Hi, I'm <span>cookie</span>I do things online</h1>
+            <h1>Hi, I'm <span class="auto-type"></span>I do things online</h1>
         </div>
     </div>
     <div class="page-transition"></div>
@@ -388,6 +388,16 @@ const height =
 <script src="https://cdnjs.cloudflare.com/ajax/libs/google-palette/1.1.1/palette.js"></script>
 <script src="codestats_piechart.js"></script>
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+<script>
+    var typed = new Typed(".auto-type", {
+        strings: ["cookie", "student", "programmar", "gamer"],
+        typeSpeed: 150,
+        backSpeed: 150,
+        loop:true
+    })
+
+</script>
 
 <script>
     function theme_toggle(){
