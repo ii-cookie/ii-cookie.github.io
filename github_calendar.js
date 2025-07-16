@@ -110,8 +110,7 @@ async function createChart(){
   const style = window.getComputedStyle(document.body);
   const bgColor = style.getPropertyValue('--bg-dark').trim();
 
-  chart.background('#0d1117');
-  chart.background(bgColor);
+  // chart.background(rgba(0,0,0,0));
 
   // configure a custom color scale
   var customColorScale = anychart.scales.ordinalColor();
