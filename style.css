@@ -229,7 +229,9 @@ body{
     
 }
 .container{
-    padding: 20px 5%;
+    padding: 10% 5%;
+    mask: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,0) );
+    backdrop-filter: blur(50px);
 }
 
 #scroll-progress, #scroll-progress::before{
@@ -529,6 +531,7 @@ nav ul li a:hover::after{
     flex-basis: 35%;
     transition: all ease 0.5s;
     padding-bottom: 30px;
+    mask: linear-gradient(rgba(0,0,0,1));
 }
 
 #user_image_container{
@@ -796,6 +799,8 @@ section{
 
 #github_contribute_calendar{
     background: transparent;
+    backdrop-filter: blur(50px);
+    border-radius: 5%;
 }
 .logos{
     margin-top: 30px;
