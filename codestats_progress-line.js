@@ -57,8 +57,8 @@ $(function(){
         const statArray = createstatArray(lang,xp);
         //might as well sort it
         const sorted_statArray = statArray.sort((a,b) => b.value - a.value)
-        console.log(sorted_statArray)
-        console.log(sorted_statArray.title)
+        // console.log(sorted_statArray)
+        // console.log(sorted_statArray.title)
         
         // sorted_statArray.map(function(e, index){  //CHANGE COLOR HERE 
         //   e.color = getGooglePaletteColor(sorted_statArray.length, index)
@@ -83,7 +83,7 @@ $(function(){
 
             const progress_line = document.createElement("div")
             progress_line.classList.add("progress-line")
-            progress_line.classList.add(sorted_statArray[i].title)
+            progress_line.classList.add(sorted_statArray[i].title.split(" "))
             let span = document.createElement("span")
             progress_line.append(span)
 
@@ -113,8 +113,8 @@ function progress_line_theme_toggle(){
             const statArray = createstatArray(lang,xp);
             //might as well sort it
             const sorted_statArray = statArray.sort((a,b) => b.value - a.value)
-            console.log(sorted_statArray)
-            console.log(sorted_statArray.title)
+            // console.log(sorted_statArray)
+            // console.log(sorted_statArray.title)
             
             // sorted_statArray.map(function(e, index){  //CHANGE COLOR HERE 
             //   e.color = getGooglePaletteColor(sorted_statArray.length, index)

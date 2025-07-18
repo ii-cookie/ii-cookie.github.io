@@ -119,7 +119,7 @@ function getPrimaryGradientColor(size, index) {
   }
 
   // Log for debugging
-  console.log(`hsl(${hslPrimary[0]}, ${hslPrimary[1]}%, ${lightness}%)`);
+  // console.log(`hsl(${hslPrimary[0]}, ${hslPrimary[1]}%, ${lightness}%)`);
 
   // Return HSL string
   return `hsl(${hslPrimary[0]}, ${hslPrimary[1]}%, ${lightness}%)`;
@@ -413,8 +413,8 @@ $(function(){
         const statArray = createstatArray(lang,xp);
         //might as well sort it
         const sorted_statArray = statArray.sort((a,b) => b.value - a.value)
-        console.log(sorted_statArray)
-        console.log(sorted_statArray.title)
+        // console.log(sorted_statArray)
+        // console.log(sorted_statArray.title)
         
         sorted_statArray.map(function(e, index){  //CHANGE COLOR HERE 
           e.color = getGooglePaletteColor(sorted_statArray.length, index)
@@ -439,8 +439,8 @@ function pie_theme_toggle(){
         const statArray = createstatArray(lang,xp);
         //might as well sort it
         const sorted_statArray = statArray.sort((a,b) => b.value - a.value)
-        console.log(sorted_statArray)
-        console.log(sorted_statArray.title)
+        // console.log(sorted_statArray)
+        // console.log(sorted_statArray.title)
         
         sorted_statArray.map(function(e, index){  //CHANGE COLOR HERE 
           e.color = getGooglePaletteColor(sorted_statArray.length, index)

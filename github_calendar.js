@@ -47,7 +47,7 @@ function getCalendarGradientColor(size, index) {
   // }
 
   // Log for debugging
-  console.log(`hsl(${hslPrimary[0]}, ${hslPrimary[1]}%, ${lightness}%)`);
+  // console.log(`hsl(${hslPrimary[0]}, ${hslPrimary[1]}%, ${lightness}%)`);
 
   // Return HSL string
   return `hsl(${hslPrimary[0]}, ${hslPrimary[1]}%, ${lightness}%)`;
@@ -74,8 +74,8 @@ async function fetchData() {
             }
             contribution_list.push(contribution)
         }
-        console.log("my data")
-        console.log(contribution_list[0])
+        // console.log("my data")
+        // console.log(contribution_list[0])
         return contribution_list; // return as array
     } catch (error) {
         console.error('Error:', error);
@@ -93,7 +93,7 @@ async function fetchData() {
 async function createChart(){
   const data = await fetchData()
 
-  console.log(data[12])
+  // console.log(data[12])
   // define a dataset variable to store the data
   var dataset = anychart.data.set(data);
 
